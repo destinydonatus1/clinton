@@ -1,0 +1,670 @@
+/* ==========================================================================
+   CLINTON RESTAURANT — CONTINENTAL CUISINE
+   Pages Specific Styles: About, Services, Contact, Gallery, Testimonials
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. INNER PAGE HERO BANNER
+   -------------------------------------------------------------------------- */
+.page-hero {
+  position: relative;
+  padding: 8rem 0 6rem 0;
+  background-color: var(--color-charcoal-deep);
+  border-bottom: 1px solid rgba(232, 185, 27, 0.2);
+  text-align: center;
+  overflow: hidden;
+}
+
+.page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.22;
+  filter: saturate(1.2);
+}
+
+.page-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(32, 32, 29, 0.6) 0%, rgba(22, 22, 20, 0.95) 100%),
+              linear-gradient(to top, rgba(32, 32, 29, 1) 0%, transparent 70%);
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.page-hero-title {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  margin-bottom: 1rem;
+}
+
+.page-hero-desc {
+  font-size: 1.15rem;
+  color: var(--color-warm-cream);
+  max-width: 650px;
+  margin: 0 auto 1.5rem auto;
+}
+
+.breadcrumbs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-serif-accent);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-cream-dim);
+}
+
+.breadcrumbs a {
+  color: var(--color-mustard-gold);
+}
+
+.breadcrumbs span.separator {
+  color: rgba(232, 185, 27, 0.5);
+}
+
+
+/* --------------------------------------------------------------------------
+   2. ABOUT PAGE STYLES
+   -------------------------------------------------------------------------- */
+.heritage-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+.heritage-img-stack {
+  position: relative;
+}
+
+.heritage-img-main {
+  width: 90%;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(232, 185, 27, 0.35);
+  box-shadow: var(--shadow-lg);
+}
+
+.heritage-img-overlap {
+  position: absolute;
+  bottom: -2.5rem;
+  right: 0;
+  width: 55%;
+  border-radius: var(--radius-sm);
+  border: 3px solid var(--color-charcoal-black);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+}
+
+.heritage-badge-stamp {
+  position: absolute;
+  top: -1.5rem;
+  left: -1.5rem;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--color-mustard-gold);
+  color: var(--color-charcoal-black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-serif-accent);
+  box-shadow: 0 8px 25px rgba(232, 185, 27, 0.4);
+  font-weight: 700;
+  line-height: 1.1;
+  transform: rotate(-10deg);
+}
+
+.heritage-badge-stamp span:first-child {
+  font-size: 1.4rem;
+}
+
+.heritage-badge-stamp span:last-child {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 3rem auto 0 auto;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--color-mustard-gold), transparent);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3.5rem;
+  width: 50%;
+  padding: 0 2.5rem;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--color-mustard-gold);
+  border: 4px solid var(--color-charcoal-deep);
+  box-shadow: 0 0 10px var(--color-mustard-gold);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot {
+  right: -8px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot {
+  left: -8px;
+}
+
+.timeline-year {
+  font-family: var(--font-serif-accent);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-mustard-gold);
+  margin-bottom: 0.4rem;
+}
+
+.timeline-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Chef Profile Card */
+.chef-section-wrap {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4rem;
+  align-items: center;
+  background-color: var(--color-charcoal-surface);
+  border: 1px solid rgba(232, 185, 27, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 3.5rem;
+}
+
+.chef-img-wrapper {
+  position: relative;
+}
+
+.chef-portrait {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(232, 185, 27, 0.4);
+}
+
+.chef-quote {
+  font-family: var(--font-serif-display);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-warm-cream);
+  border-left: 3px solid var(--color-mustard-gold);
+  padding-left: 1.5rem;
+  margin: 1.8rem 0;
+}
+
+.chef-signature-img {
+  max-width: 160px;
+  filter: invert(1) brightness(1.2) sepia(1) saturate(5) hue-rotate(5deg);
+  margin-top: 1.5rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. SERVICES PAGE STYLES
+   -------------------------------------------------------------------------- */
+.services-detailed-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+}
+
+.service-full-card {
+  background-color: var(--color-charcoal-card);
+  border: 1px solid rgba(232, 185, 27, 0.18);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.service-full-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-mustard-gold);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(232, 185, 27, 0.15);
+}
+
+.service-card-media {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.service-full-card:hover .service-card-img {
+  transform: scale(1.08);
+}
+
+.service-card-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(32, 32, 29, 0.85);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--color-mustard-gold);
+  color: var(--color-mustard-gold);
+  font-size: 0.75rem;
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-serif-accent);
+  letter-spacing: 0.1em;
+}
+
+.service-card-content {
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card-title {
+  font-size: 1.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.service-card-desc {
+  font-size: 0.95rem;
+  color: var(--color-cream-muted);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.service-features-list {
+  margin-top: auto;
+  border-top: 1px solid rgba(232, 185, 27, 0.15);
+  padding-top: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--color-warm-cream);
+  margin-bottom: 0.5rem;
+}
+
+.service-feature-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-mustard-gold);
+  flex-shrink: 0;
+}
+
+/* Accordion FAQ */
+.faq-accordion {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background-color: var(--color-charcoal-surface);
+  border: 1px solid rgba(232, 185, 27, 0.18);
+  border-radius: var(--radius-xs);
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.faq-item.is-active {
+  border-color: var(--color-mustard-gold);
+}
+
+.faq-question {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--color-pure-white);
+  padding: 1.35rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  font-family: var(--font-serif-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.faq-question:hover {
+  color: var(--color-mustard-gold);
+}
+
+.faq-icon {
+  font-size: 1.4rem;
+  color: var(--color-mustard-gold);
+  transition: transform var(--transition-fast);
+}
+
+.faq-item.is-active .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-smooth), padding var(--transition-smooth);
+  padding: 0 1.75rem;
+  font-size: 0.95rem;
+  color: var(--color-cream-muted);
+  line-height: 1.7;
+}
+
+.faq-item.is-active .faq-answer {
+  max-height: 250px;
+  padding: 0 1.75rem 1.5rem 1.75rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. CONTACT US & RESERVATION PAGE
+   -------------------------------------------------------------------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.contact-info-panel {
+  background-color: var(--color-charcoal-card);
+  border: 1px solid rgba(232, 185, 27, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 2.8rem;
+  box-shadow: var(--shadow-md);
+}
+
+.contact-block {
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(232, 185, 27, 0.15);
+}
+
+.contact-block:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.contact-block-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-serif-accent);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-mustard-gold);
+  margin-bottom: 0.85rem;
+}
+
+.contact-block-title svg {
+  width: 18px;
+  height: 18px;
+}
+
+.reservation-card-box {
+  background-color: var(--color-charcoal-surface);
+  border: 1px solid rgba(232, 185, 27, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 3rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.reservation-step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.step-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-serif-accent);
+  font-size: 0.82rem;
+  color: var(--color-cream-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.step-chip.is-active {
+  color: var(--color-mustard-gold);
+}
+
+.step-chip-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 185, 27, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.step-chip.is-active .step-chip-num {
+  background-color: var(--color-mustard-gold);
+  color: var(--color-charcoal-black);
+  border-color: var(--color-mustard-gold);
+}
+
+/* Time slot buttons */
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.time-slot-btn {
+  background-color: var(--color-charcoal-deep);
+  border: 1px solid rgba(232, 185, 27, 0.2);
+  color: var(--color-warm-cream);
+  padding: 0.65rem 0.5rem;
+  border-radius: var(--radius-xs);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.time-slot-btn:hover,
+.time-slot-btn.is-selected {
+  background-color: var(--color-mustard-gold);
+  color: var(--color-charcoal-black);
+  border-color: var(--color-mustard-gold);
+  font-weight: 600;
+}
+
+/* Seating area radio cards */
+.seating-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.seating-card {
+  border: 1px solid rgba(232, 185, 27, 0.2);
+  background-color: var(--color-charcoal-deep);
+  border-radius: var(--radius-xs);
+  padding: 1rem 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.seating-card:hover,
+.seating-card.is-selected {
+  border-color: var(--color-mustard-gold);
+  background-color: rgba(232, 185, 27, 0.12);
+}
+
+.seating-card-title {
+  font-family: var(--font-serif-display);
+  font-size: 0.95rem;
+  color: var(--color-pure-white);
+  margin-bottom: 0.25rem;
+}
+
+.seating-card-sub {
+  font-size: 0.75rem;
+  color: var(--color-cream-dim);
+}
+
+
+/* --------------------------------------------------------------------------
+   5. TESTIMONIALS & REVIEWS SECTION
+   -------------------------------------------------------------------------- */
+.testimonial-card {
+  background-color: var(--color-charcoal-surface);
+  border: 1px solid rgba(232, 185, 27, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 3rem;
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.testimonial-quote-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-mustard-gold);
+  opacity: 0.6;
+  margin: 0 auto 1.5rem auto;
+}
+
+.testimonial-text {
+  font-family: var(--font-serif-display);
+  font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+  font-style: italic;
+  color: var(--color-warm-cream);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.testimonial-author-name {
+  font-family: var(--font-serif-accent);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--color-pure-white);
+  margin-bottom: 0.25rem;
+}
+
+.testimonial-author-title {
+  font-size: 0.85rem;
+  color: var(--color-mustard-gold);
+}
+
+.stars-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  color: var(--color-mustard-gold);
+  margin-bottom: 1.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   6. RESPONSIVE BREAKPOINTS FOR PAGES
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .heritage-split {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .chef-section-wrap {
+    grid-template-columns: 1fr;
+    padding: 2.5rem;
+  }
+  .services-detailed-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .timeline::before {
+    left: 20px;
+  }
+  .timeline-item {
+    width: 100%;
+    padding-left: 55px;
+    padding-right: 0;
+    text-align: left !important;
+  }
+  .timeline-item:nth-child(even) {
+    left: 0;
+  }
+  .timeline-item:nth-child(odd) .timeline-dot,
+  .timeline-item:nth-child(even) .timeline-dot {
+    left: 12px;
+    right: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-detailed-grid {
+    grid-template-columns: 1fr;
+  }
+  .time-slots-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .seating-options {
+    grid-template-columns: 1fr;
+  }
+  .reservation-card-box {
+    padding: 1.75rem;
+  }
+}

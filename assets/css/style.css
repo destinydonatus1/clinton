@@ -1,0 +1,376 @@
+/* ==========================================================================
+   CLINTON RESTAURANT — CONTINENTAL CUISINE
+   Core Stylesheet & Design System Foundations
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Brand Palette from Guidelines */
+  --color-charcoal-black: #20201D;
+  --color-mustard-gold: #E8B91B;
+  --color-warm-cream: #F5F0E6;
+  --color-pure-white: #FFFFFF;
+  --color-muted-olive: #77764A;
+
+  /* Elevated Complementary Tones */
+  --color-charcoal-deep: #161614;
+  --color-charcoal-surface: #272724;
+  --color-charcoal-card: #2D2D28;
+  --color-charcoal-hover: #363630;
+  
+  --color-gold-hover: #F7CA33;
+  --color-gold-dark: #C8990A;
+  --color-gold-glow: rgba(232, 185, 27, 0.28);
+  --color-gold-subtle: rgba(232, 185, 27, 0.12);
+  --color-gold-border: rgba(232, 185, 27, 0.35);
+
+  --color-olive-tint: rgba(119, 118, 74, 0.15);
+  --color-olive-border: rgba(119, 118, 74, 0.4);
+
+  --color-cream-muted: #D9D2C3;
+  --color-cream-dim: #A8A294;
+
+  /* Typography */
+  --font-serif-display: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-serif-accent: 'Cinzel', 'Playfair Display', serif;
+  --font-sans-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Transitions & Shadows */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 45px rgba(0, 0, 0, 0.5);
+  --shadow-gold: 0 0 25px rgba(232, 185, 27, 0.2);
+
+  /* Container & Spacing */
+  --max-width: 1320px;
+  --max-width-narrow: 1080px;
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+/* Base Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans-body);
+  background-color: var(--color-charcoal-black);
+  color: var(--color-warm-cream);
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle luxury grain overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(232, 185, 27, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+  z-index: 9999;
+  opacity: 0.6;
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif-display);
+  color: var(--color-pure-white);
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 3.8vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+}
+
+h4 {
+  font-size: 1.25rem;
+}
+
+p {
+  color: var(--color-cream-muted);
+  font-size: 1.05rem;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+
+p.lead {
+  font-size: 1.2rem;
+  color: var(--color-warm-cream);
+  line-height: 1.8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Global Container */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.container-narrow {
+  width: 100%;
+  max-width: var(--max-width-narrow);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.section {
+  padding: 6.5rem 0;
+  position: relative;
+}
+
+.section-dark {
+  background-color: var(--color-charcoal-black);
+}
+
+.section-surface {
+  background-color: var(--color-charcoal-surface);
+}
+
+.section-deep {
+  background-color: var(--color-charcoal-deep);
+}
+
+/* Light / Warm Cream section for balanced luxury contrast */
+.section-cream {
+  background-color: var(--color-warm-cream);
+  color: var(--color-charcoal-black);
+}
+
+.section-cream h1,
+.section-cream h2,
+.section-cream h3,
+.section-cream h4 {
+  color: var(--color-charcoal-black);
+}
+
+.section-cream p {
+  color: #4a4943;
+}
+
+/* Section Header Styles */
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 4rem auto;
+}
+
+.section-header.text-left {
+  text-align: left;
+  margin-left: 0;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-serif-accent);
+  color: var(--color-mustard-gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+}
+
+.section-eyebrow::before,
+.section-eyebrow::after {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background-color: var(--color-mustard-gold);
+}
+
+.section-header.text-left .section-eyebrow::before {
+  display: none;
+}
+
+.section-title {
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-cream-muted);
+  line-height: 1.7;
+}
+
+.text-gold {
+  color: var(--color-mustard-gold) !important;
+}
+
+.text-olive {
+  color: var(--color-muted-olive) !important;
+}
+
+.bg-charcoal {
+  background-color: var(--color-charcoal-black);
+}
+
+.bg-surface {
+  background-color: var(--color-charcoal-surface);
+}
+
+/* Ornamental Crest & Divider */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.75rem auto;
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+  content: "";
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(to right, transparent, var(--color-mustard-gold), transparent);
+}
+
+.ornament-diamond {
+  width: 7px;
+  height: 7px;
+  background-color: var(--color-mustard-gold);
+  transform: rotate(45deg);
+}
+
+/* Grid Layout Utilities */
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Selection & Scrollbar */
+::selection {
+  background-color: var(--color-mustard-gold);
+  color: var(--color-charcoal-black);
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-charcoal-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3c3a32;
+  border-radius: 4px;
+  border: 2px solid var(--color-charcoal-black);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-mustard-gold);
+}
+
+@media (max-width: 992px) {
+  .grid-3, .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .section {
+    padding: 4.5rem 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .section {
+    padding: 3.5rem 0;
+  }
+}

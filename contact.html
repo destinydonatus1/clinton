@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us & Table Reservations | Clinton Restaurant</title>
+  <meta name="description" content="Reserve a table at Clinton Restaurant. Contact our concierge desk, explore private dining options, find our location in Manhattan, and review hours and dining policies.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo-crest.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-items">
+        <span class="top-bar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          742 Grand Boulevard, Manhattan, NY 10022
+        </span>
+        <span class="top-bar-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Concierge Hours: 10:00 – 23:00 Daily
+        </span>
+      </div>
+      <div class="top-bar-items">
+        <a href="tel:+12125550198" class="top-bar-item" style="color: var(--color-mustard-gold);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Direct Concierge: +1 (212) 555-0198
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY LUXURY HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="Clinton Restaurant Home">
+        <div class="logo-crest">
+          <span class="logo-crest-text">CR</span>
+        </div>
+        <div class="logo-text-group">
+          <span class="logo-title">CLINTON</span>
+          <span class="logo-subtitle">CONTINENTAL CUISINE</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Our Services</a>
+        <a href="contact.html" class="nav-link active">Contact Us</a>
+      </nav>
+
+      <!-- Action Button & Mobile Toggle -->
+      <div class="header-actions">
+        <a href="#bookingCard" class="btn btn-gold btn-sm">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Reserve a Table
+        </a>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation menu">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="drawer-backdrop"></div>
+  <aside class="mobile-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="drawer-header">
+      <div class="brand-logo">
+        <div class="logo-crest">
+          <span class="logo-crest-text">CR</span>
+        </div>
+        <div class="logo-text-group">
+          <span class="logo-title" style="font-size: 1.15rem;">CLINTON</span>
+          <span class="logo-subtitle">CONTINENTAL CUISINE</span>
+        </div>
+      </div>
+      <button class="drawer-close" aria-label="Close menu">&times;</button>
+    </div>
+
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-nav-link">Home <span>&rarr;</span></a>
+      <a href="about.html" class="drawer-nav-link">About Us <span>&rarr;</span></a>
+      <a href="services.html" class="drawer-nav-link">Our Services <span>&rarr;</span></a>
+      <a href="contact.html" class="drawer-nav-link active">Contact Us <span>&rarr;</span></a>
+    </nav>
+
+    <div style="margin-bottom: 2rem;">
+      <a href="#bookingCard" class="btn btn-gold btn-lg" style="width: 100%;">
+        Reserve a Table
+      </a>
+    </div>
+
+    <div class="drawer-info">
+      <p style="margin-bottom: 0.5rem; color: var(--color-pure-white); font-weight: 600;">Clinton Continental Dining</p>
+      <p style="font-size: 0.85rem; margin-bottom: 0.5rem;">742 Grand Boulevard, Manhattan, NY</p>
+      <p style="font-size: 0.85rem; color: var(--color-mustard-gold);">+1 (212) 555-0198</p>
+    </div>
+  </aside>
+
+  <!-- PAGE HERO BANNER -->
+  <section class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+      <div class="section-eyebrow">Reservations & Concierge</div>
+      <h1 class="page-hero-title">Connect With Us & Bookings</h1>
+      <p class="page-hero-desc">
+        We eagerly anticipate welcoming you. Secure your reservation, consult our head concierge, or explore private dining accommodations.
+      </p>
+      <div class="breadcrumbs">
+        <a href="index.html">Home</a>
+        <span class="separator">&bull;</span>
+        <span>Contact Us</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTACT & RESERVATION SECTION -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- LEFT COLUMN: CONCIERGE INFORMATION & MAP -->
+        <div class="contact-info-panel">
+          <div class="section-eyebrow" style="margin-bottom: 0.5rem;">The Concierge Desk</div>
+          <h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Guest Assistance & Details</h2>
+
+          <!-- Block 1: Location -->
+          <div class="contact-block">
+            <div class="contact-block-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Address & Valet
+            </div>
+            <p style="color: var(--color-pure-white); font-weight: 500; margin-bottom: 0.25rem;">
+              Clinton Restaurant
+            </p>
+            <p style="color: var(--color-cream-muted); margin-bottom: 0.75rem;">
+              742 Grand Boulevard, Manhattan, New York, NY 10022
+            </p>
+            <p style="font-size: 0.88rem; color: var(--color-mustard-gold); margin-bottom: 0;">
+              &bull; Complimentary White-Glove Valet Parking at front portico.
+            </p>
+          </div>
+
+          <!-- Block 2: Direct Contacts -->
+          <div class="contact-block">
+            <div class="contact-block-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              Direct Communication
+            </div>
+            <p style="margin-bottom: 0.4rem;">
+              <span style="color: var(--color-cream-dim); font-size: 0.85rem;">Concierge Desk:</span><br>
+              <a href="tel:+12125550198" style="color: var(--color-pure-white); font-weight: 600;">+1 (212) 555-0198</a>
+            </p>
+            <p style="margin-bottom: 0.4rem;">
+              <span style="color: var(--color-cream-dim); font-size: 0.85rem;">General Inquiries:</span><br>
+              <a href="mailto:info@clintonrestaurant.com" style="color: var(--color-mustard-gold);">info@clintonrestaurant.com</a>
+            </p>
+            <p style="margin-bottom: 0;">
+              <span style="color: var(--color-cream-dim); font-size: 0.85rem;">Private Events & Press:</span><br>
+              <a href="mailto:events@clintonrestaurant.com" style="color: var(--color-mustard-gold);">events@clintonrestaurant.com</a>
+            </p>
+          </div>
+
+          <!-- Block 3: Operating Hours -->
+          <div class="contact-block">
+            <div class="contact-block-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              Dining Hours
+            </div>
+            <div style="font-size: 0.9rem; line-height: 1.8;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+                <span style="color: var(--color-cream-muted);">Mon – Thu:</span>
+                <span style="color: var(--color-pure-white);">17:00 – 23:00</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+                <span style="color: var(--color-cream-muted);">Fri – Sat Lunch:</span>
+                <span style="color: var(--color-pure-white);">12:00 – 15:30</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+                <span style="color: var(--color-cream-muted);">Fri – Sat Dinner:</span>
+                <span style="color: var(--color-pure-white);">17:00 – 23:30</span>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--color-cream-muted);">Sunday Degustation:</span>
+                <span style="color: var(--color-pure-white);">12:30 – 22:00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Styled Luxury Map Representation -->
+          <div style="border-radius: var(--radius-xs); overflow: hidden; border: 1px solid rgba(232, 185, 27, 0.3); position: relative; height: 180px; background: #1a1a18; display: flex; align-items: center; justify-content: center; text-align: center;">
+            <div style="position: absolute; inset: 0; background: radial-gradient(circle, rgba(232, 185, 27, 0.08) 0%, rgba(22, 22, 20, 0.95) 90%);"></div>
+            <!-- Decorative Map Grid Lines -->
+            <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(232,185,27,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(232,185,27,0.06) 1px, transparent 1px); background-size: 24px 24px;"></div>
+            <div style="position: relative; z-index: 2; padding: 1rem;">
+              <div style="width: 38px; height: 38px; margin: 0 auto 0.5rem auto; background-color: var(--color-mustard-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-charcoal-black); box-shadow: 0 0 15px var(--color-gold-glow);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <span style="font-family: var(--font-serif-accent); font-size: 0.9rem; color: var(--color-pure-white); font-weight: 700; letter-spacing: 0.1em; display: block;">CLINTON RESTAURANT</span>
+              <span style="font-size: 0.75rem; color: var(--color-mustard-gold);">Manhattan Grand Boulevard &bull; Valet Portico</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: MASTER INTERACTIVE RESERVATION CARD -->
+        <div class="reservation-card-box" id="bookingCard">
+          <div class="section-eyebrow" style="margin-bottom: 0.5rem;">Table Booking Engine</div>
+          <h2 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Reserve Your Seating</h2>
+          <p style="color: var(--color-cream-muted); margin-bottom: 2rem;">
+            Instant electronic confirmation. Select your preferred date, service time, and dining ambience.
+          </p>
+
+          <form class="reservation-form">
+            <!-- Step 1: Party & Date -->
+            <div class="grid grid-2" style="gap: 1.25rem;">
+              <div class="form-group">
+                <label class="form-label">Number of Guests</label>
+                <select class="form-control" name="guests">
+                  <option value="1 Guest">1 Guest (Solo Gastronomy)</option>
+                  <option value="2 Guests" selected>2 Guests (Intimate Dining)</option>
+                  <option value="3 Guests">3 Guests</option>
+                  <option value="4 Guests">4 Guests (Four Persons)</option>
+                  <option value="6 Guests">6 Guests (Salon Banquet)</option>
+                  <option value="8+ Guests">8+ Guests (Private Suite)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Dining Date</label>
+                <input type="date" class="form-control" name="date" required>
+              </div>
+            </div>
+
+            <!-- Step 2: Time Slot Pills -->
+            <div class="form-group">
+              <label class="form-label">Select Service Time</label>
+              <input type="hidden" name="dining_time" value="19:30">
+              <div class="time-slots-grid">
+                <button type="button" class="time-slot-btn" data-time="17:30">17:30</button>
+                <button type="button" class="time-slot-btn" data-time="18:00">18:00</button>
+                <button type="button" class="time-slot-btn" data-time="18:30">18:30</button>
+                <button type="button" class="time-slot-btn" data-time="19:00">19:00</button>
+                <button type="button" class="time-slot-btn is-selected" data-time="19:30">19:30</button>
+                <button type="button" class="time-slot-btn" data-time="20:00">20:00</button>
+                <button type="button" class="time-slot-btn" data-time="20:30">20:30</button>
+                <button type="button" class="time-slot-btn" data-time="21:00">21:00</button>
+              </div>
+            </div>
+
+            <!-- Step 3: Seating Atmosphere Cards -->
+            <div class="form-group">
+              <label class="form-label">Dining Ambience Preference</label>
+              <input type="hidden" name="seating_area" value="Grand Dining Salon">
+              <div class="seating-options">
+                <div class="seating-card is-selected" data-seating="Grand Dining Salon">
+                  <div class="seating-card-title">Main Salon</div>
+                  <div class="seating-card-sub">Candlelit Grand Room</div>
+                </div>
+                <div class="seating-card" data-seating="The Sommelier Vault">
+                  <div class="seating-card-title">Wine Vault</div>
+                  <div class="seating-card-sub">Glass Cellar Alcove</div>
+                </div>
+                <div class="seating-card" data-seating="Chef's Atelier">
+                  <div class="seating-card-title">Chef's Atelier</div>
+                  <div class="seating-card-sub">Kitchen Brigade View</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: Contact Details -->
+            <div class="grid grid-2" style="gap: 1.25rem;">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Lord / Lady / Mr. Clinton" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" name="email" placeholder="guest@domain.com" required>
+              </div>
+            </div>
+
+            <div class="grid grid-2" style="gap: 1.25rem;">
+              <div class="form-group">
+                <label class="form-label">Telephone Contact</label>
+                <input type="tel" class="form-control" name="phone" placeholder="+1 (212) 000-0000" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Special Occasion</label>
+                <select class="form-control" name="occasion">
+                  <option value="Culinary Degustation" selected>Culinary Degustation</option>
+                  <option value="Anniversary Celebration">Anniversary</option>
+                  <option value="Birthday Honor">Birthday Honor</option>
+                  <option value="Executive Business Dinner">Executive Business Dinner</option>
+                  <option value="Romantic Rendezvous">Romantic Rendezvous</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Dietary Accommodations & Personal Requests</label>
+              <textarea class="form-control" name="notes" rows="3" placeholder="Inform our chef of shellfish/nut allergies, vegetarian requirements, or preferred anniversary champagne..."></textarea>
+            </div>
+
+            <div style="margin-top: 2rem;">
+              <button type="submit" class="btn btn-gold btn-lg" style="width: 100%;">
+                Confirm & Secure Table Reservation
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DIRECT GENERAL INQUIRY SECTION -->
+  <section class="section section-surface">
+    <div class="container container-narrow">
+      <div class="section-header">
+        <div class="section-eyebrow">Direct Inquiries</div>
+        <h2 class="section-title">Send a Message to the Concierge</h2>
+        <div class="ornament-divider">
+          <div class="ornament-diamond"></div>
+        </div>
+        <p class="section-subtitle">
+          For sommelier wine acquisitions, press requests, feedback, or general inquiries, our team is at your complete disposal.
+        </p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); window.showToast('Message dispatched to Clinton Concierge Desk. We will respond promptly.'); this.reset();" style="max-width: 780px; margin: 0 auto;">
+        <div class="grid grid-2" style="gap: 1.5rem;">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" class="form-control" placeholder="Full Name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Email</label>
+            <input type="email" class="form-control" placeholder="email@address.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Subject</label>
+          <input type="text" class="form-control" placeholder="e.g. Wine Acquisition / Press Inquiry / Special Service" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Your Message</label>
+          <textarea class="form-control" rows="5" placeholder="Share the details of your inquiry..." required></textarea>
+        </div>
+
+        <div style="text-align: center; margin-top: 1.5rem;">
+          <button type="submit" class="btn btn-gold btn-lg" style="min-width: 240px;">
+            Transmit Message
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="container footer-grid">
+        <!-- Col 1 -->
+        <div>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 1.25rem;">
+            <div class="logo-crest">
+              <span class="logo-crest-text">CR</span>
+            </div>
+            <div class="logo-text-group">
+              <span class="logo-title">CLINTON</span>
+              <span class="logo-subtitle">CONTINENTAL CUISINE</span>
+            </div>
+          </a>
+          <p style="font-size: 0.95rem; color: var(--color-cream-muted); line-height: 1.7; margin-bottom: 1.5rem;">
+            A premier sanctuary of Continental gastronomy. Celebrating the grand culinary arts of France, Italy, and Central Europe with peerless precision and hospitality.
+          </p>
+          <div class="footer-socials">
+            <a href="#" class="social-icon-btn" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="social-icon-btn" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" class="social-icon-btn" aria-label="TripAdvisor">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div>
+          <h4 class="footer-col-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">&bull; Home</a></li>
+            <li><a href="about.html" class="footer-link">&bull; About Us & Heritage</a></li>
+            <li><a href="services.html" class="footer-link">&bull; Our Services & Events</a></li>
+            <li><a href="contact.html" class="footer-link">&bull; Contact & Reservations</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div>
+          <h4 class="footer-col-title">Service Hours</h4>
+          <div style="font-size: 0.9rem; color: var(--color-cream-muted); line-height: 1.8;">
+            <p style="margin-bottom: 0.75rem;">
+              <strong style="color: var(--color-pure-white); display: block;">Monday – Thursday</strong>
+              Dinner: 17:00 – 23:00
+            </p>
+            <p style="margin-bottom: 0.75rem;">
+              <strong style="color: var(--color-pure-white); display: block;">Friday & Saturday</strong>
+              Lunch: 12:00 – 15:30<br>
+              Dinner: 17:00 – 23:30
+            </p>
+            <p style="margin-bottom: 0;">
+              <strong style="color: var(--color-pure-white); display: block;">Sunday Degustation</strong>
+              12:30 – 22:00
+            </p>
+          </div>
+        </div>
+
+        <!-- Col 4 -->
+        <div>
+          <h4 class="footer-col-title">Privé Gazette</h4>
+          <p style="font-size: 0.9rem; color: var(--color-cream-muted); margin-bottom: 1rem;">
+            Subscribe to receive invitation-only notices for seasonal truffle releases, cellar unearthings, and guest masterclasses.
+          </p>
+          <form class="footer-newsletter-form">
+            <input type="email" class="footer-newsletter-input" placeholder="Your formal email..." required>
+            <button type="submit" class="footer-newsletter-btn">Join</button>
+          </form>
+          <div style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--color-cream-dim);">
+            Concierge Desk: <span style="color: var(--color-mustard-gold);">+1 (212) 555-0198</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <div>
+          &copy; 2026 Clinton Restaurant. All Rights Reserved. Specializing in Haute Continental Cuisine.
+        </div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#" style="color: var(--color-cream-dim); transition: color 0.2s;" onmouseover="this.style.color='#E8B91B'" onmouseout="this.style.color='var(--color-cream-dim)'">Privacy Policy</a>
+          <a href="#" style="color: var(--color-cream-dim); transition: color 0.2s;" onmouseover="this.style.color='#E8B91B'" onmouseout="this.style.color='var(--color-cream-dim)'">Terms of Dining</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/reservation.js"></script>
+</body>
+</html>
