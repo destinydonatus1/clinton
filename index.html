@@ -6,13 +6,19 @@
   <title>Clinton Restaurant — Exceptional Continental Cuisine & Fine Dining</title>
   <meta name="description" content="Welcome to Clinton Restaurant. Experience world-class Continental cuisine, Michelin-inspired gastronomy, and an exquisite 2,800-bottle wine cellar in a luxurious, sophisticated atmosphere.">
   
-  <!-- Favicon -->
+  <!-- Favicon & PWA Manifest -->
   <link rel="icon" type="image/svg+xml" href="assets/images/logo-crest.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#E8B91B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Clinton Privé">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/pages.css">
+  <link rel="stylesheet" href="assets/css/webapp.css">
 </head>
 <body>
 
@@ -62,6 +68,10 @@
 
       <!-- Action Button & Mobile Toggle -->
       <div class="header-actions">
+        <button class="btn btn-outline-gold btn-sm" id="pwaInstallBtn" style="display: none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Install App
+        </button>
         <button class="btn btn-gold btn-sm" data-open-modal="reservation">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
           Reserve a Table
@@ -861,9 +871,11 @@
   </div>
 
   <!-- Scripts -->
+  <script src="assets/js/app-state.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/slider.js"></script>
   <script src="assets/js/menu.js"></script>
   <script src="assets/js/reservation.js"></script>
+  <script src="assets/js/webapp.js"></script>
 </body>
 </html>

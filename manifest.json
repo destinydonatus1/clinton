@@ -1,0 +1,19 @@
+{
+  "name": "Clinton Restaurant — Continental Cuisine",
+  "short_name": "Clinton Privé",
+  "description": "Luxury Continental Cuisine, Table Reservations, Sommelier Pairing & Fine Dining Web App",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#20201D",
+  "theme_color": "#E8B91B",
+  "icons": [
+    {
+      "src": "./assets/images/logo-crest.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "lifestyle", "luxury"]
+}

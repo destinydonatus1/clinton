@@ -77,6 +77,24 @@ function initReservationForms() {
       // Generate Reference Code
       const refCode = 'CR-' + Math.floor(100000 + Math.random() * 900000);
 
+      // Save into WebApp Central Persistent Store
+      if (window.ClintonStore) {
+        window.ClintonStore.addReservation({
+          id: refCode,
+          name: name,
+          email: email,
+          phone: phone,
+          date: date,
+          time: time,
+          guests: guests,
+          seating: seating,
+          occasion: occasion,
+          notes: notes,
+          status: 'Confirmed',
+          createdAt: new Date().toISOString()
+        });
+      }
+
       // Render Confirmation View
       const parentContainer = form.closest('.reservation-card-box') || form.closest('.modal-content');
       if (parentContainer) {

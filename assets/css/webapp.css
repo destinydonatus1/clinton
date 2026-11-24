@@ -1,0 +1,531 @@
+/* ==========================================================================
+   CLINTON RESTAURANT — WEB APPLICATION SUITE
+   Components: App Dock, Slide Cart, Interactive Floor Plan, Sommelier Concierge,
+   My Bookings Portal, Privé VIP Pass, and Maître D' Operations Dashboard.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. FLOATING LUXURY APP DOCK (Quick Action Bar)
+   -------------------------------------------------------------------------- */
+.app-floating-dock {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1500;
+  background: rgba(22, 22, 20, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 185, 27, 0.35);
+  border-radius: 50px;
+  padding: 0.45rem 0.85rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(232, 185, 27, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-smooth);
+}
+
+.dock-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-warm-cream);
+  padding: 0.55rem 0.9rem;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all var(--transition-fast);
+  position: relative;
+  white-space: nowrap;
+}
+
+.dock-btn svg {
+  width: 17px;
+  height: 17px;
+  color: var(--color-mustard-gold);
+  flex-shrink: 0;
+}
+
+.dock-btn:hover {
+  background: rgba(232, 185, 27, 0.15);
+  color: var(--color-pure-white);
+}
+
+.dock-btn.is-highlight {
+  background: var(--color-mustard-gold);
+  color: var(--color-charcoal-black);
+}
+
+.dock-btn.is-highlight svg {
+  color: var(--color-charcoal-black);
+}
+
+.dock-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: #E8B91B;
+  color: #20201D;
+  font-size: 0.68rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.dock-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(232, 185, 27, 0.25);
+  margin: 0 0.2rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. SLIDE-OUT ORDER CART DRAWER
+   -------------------------------------------------------------------------- */
+.cart-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 14, 12, 0.8);
+  backdrop-filter: blur(6px);
+  z-index: 2500;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.cart-drawer-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 440px;
+  height: 100vh;
+  background: var(--color-charcoal-deep);
+  border-left: 1px solid rgba(232, 185, 27, 0.35);
+  z-index: 2501;
+  display: flex;
+  flex-direction: column;
+  transition: right var(--transition-smooth);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.cart-drawer.is-active {
+  right: 0;
+}
+
+.cart-header {
+  padding: 1.8rem;
+  border-bottom: 1px solid rgba(232, 185, 27, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cart-title {
+  font-family: var(--font-serif-accent);
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  color: var(--color-pure-white);
+  text-transform: uppercase;
+}
+
+.cart-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.cart-empty-state {
+  text-align: center;
+  margin: auto 0;
+  padding: 2rem;
+}
+
+.cart-empty-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.25rem auto;
+  color: rgba(232, 185, 27, 0.4);
+}
+
+.cart-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--color-charcoal-surface);
+  border: 1px solid rgba(232, 185, 27, 0.18);
+  border-radius: var(--radius-xs);
+  position: relative;
+}
+
+.cart-item-img {
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-xs);
+  object-fit: cover;
+  border: 1px solid rgba(232, 185, 27, 0.25);
+  flex-shrink: 0;
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-name {
+  font-family: var(--font-serif-display);
+  font-size: 1.05rem;
+  color: var(--color-pure-white);
+  margin-bottom: 0.2rem;
+}
+
+.cart-item-price {
+  font-family: var(--font-serif-accent);
+  color: var(--color-mustard-gold);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.cart-qty-ctrl {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+.qty-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(232, 185, 27, 0.35);
+  background: transparent;
+  color: var(--color-warm-cream);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+}
+
+.qty-btn:hover {
+  background: var(--color-mustard-gold);
+  color: var(--color-charcoal-black);
+}
+
+.qty-val {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-pure-white);
+  min-width: 18px;
+  text-align: center;
+}
+
+.cart-footer {
+  padding: 1.8rem;
+  border-top: 1px solid rgba(232, 185, 27, 0.2);
+  background: var(--color-charcoal-deep);
+}
+
+.cart-total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--color-cream-muted);
+}
+
+.cart-total-row.grand-total {
+  font-family: var(--font-serif-accent);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-pure-white);
+  border-top: 1px solid rgba(232, 185, 27, 0.2);
+  padding-top: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.cart-total-row.grand-total span:last-child {
+  color: var(--color-mustard-gold);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. INTERACTIVE RESTAURANT FLOOR PLAN TABLE SELECTOR
+   -------------------------------------------------------------------------- */
+.floor-plan-container {
+  background: #171715;
+  border: 1px solid rgba(232, 185, 27, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.floor-zones-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--color-cream-dim);
+}
+
+.legend-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-dot.available { background: #4ADE80; box-shadow: 0 0 8px rgba(74, 222, 128, 0.5); }
+.legend-dot.selected { background: #E8B91B; box-shadow: 0 0 10px rgba(232, 185, 27, 0.8); }
+.legend-dot.reserved { background: #EF4444; }
+
+.floor-grid-visual {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.table-node-card {
+  background: #242420;
+  border: 1px solid rgba(232, 185, 27, 0.25);
+  border-radius: var(--radius-xs);
+  padding: 1.1rem 0.85rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.table-node-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-mustard-gold);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.table-node-card.is-selected {
+  background: rgba(232, 185, 27, 0.18);
+  border-color: var(--color-mustard-gold);
+  box-shadow: 0 0 18px rgba(232, 185, 27, 0.35);
+}
+
+.table-node-card.is-reserved {
+  opacity: 0.45;
+  cursor: not-allowed;
+  border-color: #555;
+}
+
+.table-icon {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 0.45rem auto;
+  color: var(--color-mustard-gold);
+}
+
+.table-node-title {
+  font-family: var(--font-serif-accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-pure-white);
+  margin-bottom: 0.2rem;
+}
+
+.table-node-meta {
+  font-size: 0.75rem;
+  color: var(--color-cream-dim);
+}
+
+
+/* --------------------------------------------------------------------------
+   4. SOMMELIER CONCIERGE WIZARD
+   -------------------------------------------------------------------------- */
+.sommelier-wizard {
+  text-align: center;
+}
+
+.pairing-result-box {
+  background: var(--color-charcoal-deep);
+  border: 1px solid var(--color-mustard-gold);
+  border-radius: var(--radius-sm);
+  padding: 2rem;
+  margin-top: 1.5rem;
+  text-align: left;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+}
+
+.pairing-wine-badge {
+  background: rgba(232, 185, 27, 0.15);
+  color: var(--color-mustard-gold);
+  border: 1px solid var(--color-mustard-gold);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-xs);
+  font-size: 0.75rem;
+  font-family: var(--font-serif-accent);
+  letter-spacing: 0.1em;
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. PRIVÉ VIP PASS CARD
+   -------------------------------------------------------------------------- */
+.vip-pass-card {
+  background: linear-gradient(135deg, #2A2A26 0%, #1A1A18 50%, #2D2715 100%);
+  border: 1px solid var(--color-mustard-gold);
+  border-radius: var(--radius-sm);
+  padding: 2.5rem;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 30px rgba(232, 185, 27, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.vip-pass-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(232, 185, 27, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.vip-chip-metal {
+  width: 48px;
+  height: 36px;
+  background: linear-gradient(135deg, #d4af37 0%, #fff2a3 50%, #aa8012 100%);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  border: 1px solid #735706;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. MAÎTRE D' OPERATIONS DASHBOARD
+   -------------------------------------------------------------------------- */
+.dashboard-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.metric-stat-card {
+  background: var(--color-charcoal-deep);
+  border: 1px solid rgba(232, 185, 27, 0.25);
+  border-radius: var(--radius-xs);
+  padding: 1.35rem 1rem;
+  text-align: center;
+}
+
+.metric-stat-num {
+  font-family: var(--font-serif-accent);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-mustard-gold);
+  margin-bottom: 0.2rem;
+}
+
+.metric-stat-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-cream-dim);
+}
+
+.live-bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+
+.live-bookings-table th {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(232, 185, 27, 0.3);
+  color: var(--color-mustard-gold);
+  font-family: var(--font-serif-accent);
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.live-bookings-table td {
+  padding: 0.95rem 1rem;
+  border-bottom: 1px solid rgba(232, 185, 27, 0.12);
+  color: var(--color-warm-cream);
+}
+
+.live-bookings-table tr:hover td {
+  background: rgba(232, 185, 27, 0.05);
+}
+
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE UTILITIES
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .app-floating-dock {
+    width: 92%;
+    bottom: 1rem;
+    justify-content: space-around;
+    padding: 0.4rem 0.5rem;
+  }
+  .dock-btn span {
+    display: none;
+  }
+  .floor-grid-visual {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dashboard-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .pairing-result-box {
+    flex-direction: column;
+    text-align: center;
+  }
+}
