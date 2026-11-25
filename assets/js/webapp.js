@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPwaSupport();
   injectWebAppDock();
   injectWebAppModals();
+  initAuthController();
   initCartController();
   initFloorPlanController();
   initSommelierConcierge();
@@ -332,6 +333,10 @@ function injectWebAppModals() {
               <li>&bull; Annual Invitation to White Truffle Degustation Gala</li>
             </ul>
           </div>
+
+          <div style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed rgba(232, 185, 27, 0.25); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;" id="vipModalAuthFooter">
+            <!-- Dynamic via JS -->
+          </div>
         </div>
       </div>
     </div>
@@ -347,6 +352,8 @@ function injectWebAppModals() {
           </div>
           <span class="badge badge-gold">LIVE DINNER SERVICE</span>
         </div>
+
+        <div id="maitreDStaffNotice"></div>
 
         <div class="dashboard-metrics-grid">
           <div class="metric-stat-card">
@@ -388,6 +395,116 @@ function injectWebAppModals() {
         </div>
       </div>
     </div>
+
+    <!-- H. AUTHENTICATION & PRIVÉ MEMBER MODAL -->
+    <div class="modal-overlay" id="authModal" role="dialog" aria-hidden="true">
+      <div class="modal-content" style="max-width: 580px;">
+        <button class="modal-close-btn" data-close="authModal">&times;</button>
+        
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <div class="section-eyebrow">Privé Member Access</div>
+          <h3 style="font-size: 2rem; margin-bottom: 0.35rem;">Clinton Member Portal</h3>
+          <p style="color: var(--color-cream-muted); font-size: 0.92rem;">
+            Sign in to unlock exclusive cellar reserves, priority tables, and dining rewards.
+          </p>
+        </div>
+
+        <!-- Auth Tabs -->
+        <div class="auth-nav-tabs">
+          <button class="auth-nav-tab is-active" id="tabSignInBtn">Sign In</button>
+          <button class="auth-nav-tab" id="tabRegisterBtn">Join Privé Club</button>
+        </div>
+
+        <!-- Tab 1: Sign In -->
+        <div id="authSignInPanel">
+          <!-- 1-Click Demo Accounts Bar -->
+          <div class="demo-login-box">
+            <div class="demo-login-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              Quick 1-Click Demo Sign In:
+            </div>
+            <div class="demo-chips-grid">
+              <button type="button" class="demo-chip-btn" id="demoVipBtn">👑 VIP (Lord Sterling)</button>
+              <button type="button" class="demo-chip-btn" id="demoStaffBtn">🎩 Staff (Maître D')</button>
+              <button type="button" class="demo-chip-btn" id="demoMemberBtn">⭐ Guest (Eleanor)</button>
+            </div>
+          </div>
+
+          <form id="signInForm">
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="loginEmail" placeholder="your.email@luxury.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Account Password</label>
+              <div class="password-input-wrap">
+                <input type="password" class="form-control" id="loginPassword" placeholder="••••••••" required>
+                <button type="button" class="password-toggle-eye" id="toggleLoginPassword" aria-label="Toggle password visibility">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 0.85rem;">
+              <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--color-cream-muted); cursor: pointer;">
+                <input type="checkbox" checked style="accent-color: var(--color-mustard-gold);"> Remember this device
+              </label>
+              <a href="#" style="color: var(--color-mustard-gold);" onclick="event.preventDefault(); window.showToast('Demo reset link dispatched to your email.');">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-gold btn-lg" style="width: 100%;">
+              Sign In to Member Portal
+            </button>
+          </form>
+        </div>
+
+        <!-- Tab 2: Join Privé Club -->
+        <div id="authRegisterPanel" style="display: none;">
+          <form id="registerForm">
+            <div class="grid grid-2" style="gap: 1.25rem;">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="regName" placeholder="Lady / Lord / Mr." required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Telephone</label>
+                <input type="tel" class="form-control" id="regPhone" placeholder="+1 (212) 000-0000" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="regEmail" placeholder="your.name@domain.com" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Create Password</label>
+              <div class="password-input-wrap">
+                <input type="password" class="form-control" id="regPassword" placeholder="••••••••" required minlength="6">
+                <button type="button" class="password-toggle-eye" id="toggleRegPassword" aria-label="Toggle password visibility">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Dining Preferences & Allergies</label>
+              <input type="text" class="form-control" id="regPrefs" placeholder="e.g. Shellfish allergy, preferred cellar table, Burgundy wines">
+            </div>
+
+            <div style="font-size: 0.8rem; color: var(--color-cream-dim); margin-bottom: 1.5rem;">
+              By joining, you instantly receive <strong>300 Privé dining credits</strong> and priority notification for seasonal white truffle releases.
+            </div>
+
+            <button type="submit" class="btn btn-gold btn-lg" style="width: 100%;">
+              Create Account & Claim 300 pts
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
   `;
 
   document.body.insertAdjacentHTML('beforeend', modalsHtml);
@@ -401,6 +518,349 @@ function injectWebAppModals() {
       document.body.style.overflow = '';
     });
   });
+}
+
+/**
+ * 3b. Authentication & Privé Member Portal Controller
+ */
+function initAuthController() {
+  const modal = document.getElementById('authModal');
+  const tabSignIn = document.getElementById('tabSignInBtn');
+  const tabRegister = document.getElementById('tabRegisterBtn');
+  const panelSignIn = document.getElementById('authSignInPanel');
+  const panelRegister = document.getElementById('authRegisterPanel');
+  const signInForm = document.getElementById('signInForm');
+  const registerForm = document.getElementById('registerForm');
+  const loginEmail = document.getElementById('loginEmail');
+  const loginPassword = document.getElementById('loginPassword');
+  const regName = document.getElementById('regName');
+  const regPhone = document.getElementById('regPhone');
+  const regEmail = document.getElementById('regEmail');
+  const regPassword = document.getElementById('regPassword');
+  const regPrefs = document.getElementById('regPrefs');
+  const toggleLoginPassword = document.getElementById('toggleLoginPassword');
+  const toggleRegPassword = document.getElementById('toggleRegPassword');
+
+  // 1. Tab Switching
+  window.switchAuthTab = (tab = 'signin') => {
+    if (!tabSignIn || !tabRegister || !panelSignIn || !panelRegister) return;
+    if (tab === 'signin') {
+      tabSignIn.classList.add('is-active');
+      tabRegister.classList.remove('is-active');
+      panelSignIn.style.display = 'block';
+      panelRegister.style.display = 'none';
+    } else {
+      tabRegister.classList.add('is-active');
+      tabSignIn.classList.remove('is-active');
+      panelRegister.style.display = 'block';
+      panelSignIn.style.display = 'none';
+    }
+  };
+
+  if (tabSignIn) tabSignIn.addEventListener('click', () => window.switchAuthTab('signin'));
+  if (tabRegister) tabRegister.addEventListener('click', () => window.switchAuthTab('register'));
+
+  // 2. Global Open Auth Modal
+  window.openAuthModal = (tab = 'signin') => {
+    if (!modal) return;
+    window.switchAuthTab(tab);
+    modal.classList.add('is-active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  // 3. Password visibility toggle
+  const wirePasswordToggle = (btn, input) => {
+    if (!btn || !input) return;
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isPassword = input.type === 'password';
+      input.type = isPassword ? 'text' : 'password';
+      btn.innerHTML = isPassword
+        ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`
+        : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
+    });
+  };
+
+  wirePasswordToggle(toggleLoginPassword, loginPassword);
+  wirePasswordToggle(toggleRegPassword, regPassword);
+
+  // 4. One-Click Demo Login Handlers
+  const demoVipBtn = document.getElementById('demoVipBtn');
+  const demoStaffBtn = document.getElementById('demoStaffBtn');
+  const demoMemberBtn = document.getElementById('demoMemberBtn');
+
+  const executeDemoLogin = (email, pass) => {
+    if (loginEmail) loginEmail.value = email;
+    if (loginPassword) loginPassword.value = pass;
+    const res = window.ClintonStore?.login(email, pass);
+    if (res && res.success) {
+      if (modal) modal.classList.remove('is-active');
+      document.body.style.overflow = '';
+      window.playLuxuryChime?.('success');
+      window.showToast?.(`Welcome, ${res.user.name} (${res.user.tier || 'Member'})!`);
+    } else {
+      window.showToast?.(res?.message || 'Login failed', 'error');
+    }
+  };
+
+  if (demoVipBtn) demoVipBtn.addEventListener('click', () => executeDemoLogin('vip@clinton.com', 'password123'));
+  if (demoStaffBtn) demoStaffBtn.addEventListener('click', () => executeDemoLogin('staff@clinton.com', 'staff2026'));
+  if (demoMemberBtn) demoMemberBtn.addEventListener('click', () => executeDemoLogin('guest@example.com', 'password123'));
+
+  // 5. Sign In Form Submit
+  if (signInForm) {
+    signInForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = loginEmail?.value;
+      const pass = loginPassword?.value;
+      const res = window.ClintonStore?.login(email, pass);
+      if (res && res.success) {
+        if (modal) modal.classList.remove('is-active');
+        document.body.style.overflow = '';
+        window.playLuxuryChime?.('success');
+        window.showToast?.(`Welcome back, ${res.user.name}!`);
+        signInForm.reset();
+      } else {
+        window.showToast?.(res?.message || 'Invalid credentials.', 'error');
+      }
+    });
+  }
+
+  // 6. Register Form Submit
+  if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = {
+        name: regName?.value,
+        phone: regPhone?.value,
+        email: regEmail?.value,
+        password: regPassword?.value,
+        preferences: regPrefs?.value
+      };
+      const res = window.ClintonStore?.register(data);
+      if (res && res.success) {
+        if (modal) modal.classList.remove('is-active');
+        document.body.style.overflow = '';
+        window.playLuxuryChime?.('success');
+        window.showToast?.(`Welcome to Privé Club, ${res.user.name}! 300 credits awarded.`);
+        registerForm.reset();
+      } else {
+        window.showToast?.(res?.message || 'Registration failed.', 'error');
+      }
+    });
+  }
+
+  // 7. Render Header Auth Pill / User Dropdown
+  const renderHeaderAuthWidget = () => {
+    const user = window.ClintonStore?.getCurrentUser();
+    const headerActions = document.querySelectorAll('.header-actions');
+
+    headerActions.forEach(container => {
+      let widget = container.querySelector('.user-auth-widget');
+      if (!widget) {
+        widget = document.createElement('div');
+        widget.className = 'user-auth-widget';
+        const reserveBtn = container.querySelector('[data-open-modal="reservation"]');
+        if (reserveBtn) {
+          container.insertBefore(widget, reserveBtn);
+        } else {
+          container.prepend(widget);
+        }
+      }
+
+      if (!user) {
+        widget.innerHTML = `
+          <button class="btn btn-outline-gold btn-sm user-signin-trigger" type="button" aria-label="Sign In or Join Privé Club" style="padding: 0.55rem 0.95rem; display: inline-flex; align-items: center; gap: 0.45rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Sign In / Join</span>
+          </button>
+        `;
+        const btn = widget.querySelector('.user-signin-trigger');
+        btn?.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.openAuthModal('signin');
+        });
+      } else {
+        const initials = (user.name || 'CR')
+          .split(' ')
+          .map(part => part[0])
+          .slice(0, 2)
+          .join('')
+          .toUpperCase();
+        const shortName = user.name.split(' ')[0];
+
+        widget.innerHTML = `
+          <button class="user-profile-btn" type="button" aria-label="User Account Menu" aria-expanded="false">
+            <span class="user-avatar-badge">${initials}</span>
+            <span class="user-display-name">${escapeHtml(shortName)}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          <div class="user-profile-dropdown" role="menu">
+            <div class="dropdown-user-header">
+              <div class="dropdown-user-name">${escapeHtml(user.name)}</div>
+              <div class="dropdown-user-role">${escapeHtml(user.tier || 'Privé Member')}</div>
+              <div style="font-size: 0.78rem; color: var(--color-cream-dim); margin-top: 0.35rem;">
+                ${user.points !== undefined ? `<strong style="color: var(--color-mustard-gold);">${user.points} pts</strong> available` : ''}
+                ${user.code ? ` &bull; <span style="font-family: monospace; color: var(--color-warm-cream);">${user.code}</span>` : ''}
+              </div>
+            </div>
+            <div class="dropdown-menu-list">
+              <button type="button" class="dropdown-menu-item" data-action="bookings">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>My Reservations</span>
+              </button>
+              <button type="button" class="dropdown-menu-item" data-action="cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                <span>Tasting Order & Cart</span>
+              </button>
+              <button type="button" class="dropdown-menu-item" data-action="vip">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Digital Privé Pass</span>
+              </button>
+              ${user.role === 'staff' ? `
+              <button type="button" class="dropdown-menu-item" data-action="maitred">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+                <span style="color: var(--color-mustard-gold); font-weight: 700;">Maître D' Live Desk</span>
+              </button>
+              ` : ''}
+              <button type="button" class="dropdown-menu-item dropdown-logout-btn" data-action="logout">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                <span>Sign Out</span>
+              </button>
+            </div>
+          </div>
+        `;
+
+        const profileBtn = widget.querySelector('.user-profile-btn');
+        const dropdown = widget.querySelector('.user-profile-dropdown');
+
+        profileBtn?.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isActive = dropdown.classList.contains('is-active');
+          document.querySelectorAll('.user-profile-dropdown').forEach(d => d.classList.remove('is-active'));
+          if (!isActive) dropdown.classList.add('is-active');
+        });
+
+        widget.querySelectorAll('.dropdown-menu-item').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.remove('is-active');
+            const act = btn.getAttribute('data-action');
+            if (act === 'bookings') {
+              document.getElementById('dockBookingsBtn')?.click();
+            } else if (act === 'cart') {
+              document.getElementById('dockCartBtn')?.click();
+            } else if (act === 'vip') {
+              document.getElementById('dockVipBtn')?.click();
+            } else if (act === 'maitred') {
+              document.getElementById('dockMaitreDBtn')?.click();
+            } else if (act === 'logout') {
+              window.ClintonStore?.logout();
+              window.playLuxuryChime?.('chime');
+              window.showToast?.('You have been signed out safely.');
+            }
+          });
+        });
+      }
+    });
+
+    // Also update mobile drawer button
+    const drawerNav = document.querySelector('.mobile-drawer .drawer-nav');
+    if (drawerNav) {
+      let mobileAuth = document.querySelector('.mobile-auth-shortcut');
+      if (!mobileAuth) {
+        mobileAuth = document.createElement('a');
+        mobileAuth.className = 'drawer-nav-link mobile-auth-shortcut';
+        mobileAuth.href = '#';
+        mobileAuth.style.borderColor = 'rgba(232, 185, 27, 0.4)';
+        mobileAuth.style.color = 'var(--color-mustard-gold)';
+        drawerNav.appendChild(mobileAuth);
+      }
+      if (!user) {
+        mobileAuth.innerHTML = `Privé Member Sign In <span>&rarr;</span>`;
+        mobileAuth.onclick = (e) => {
+          e.preventDefault();
+          document.querySelector('.drawer-close')?.click();
+          window.openAuthModal('signin');
+        };
+      } else {
+        mobileAuth.innerHTML = `Account: ${escapeHtml(user.name.split(' ')[0])} (${escapeHtml(user.tier || 'Member')}) <span>&rarr;</span>`;
+        mobileAuth.onclick = (e) => {
+          e.preventDefault();
+          document.querySelector('.drawer-close')?.click();
+          document.getElementById('dockVipBtn')?.click();
+        };
+      }
+    }
+  };
+
+  // Close dropdown on outside click
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.user-auth-widget')) {
+      document.querySelectorAll('.user-profile-dropdown').forEach(d => d.classList.remove('is-active'));
+    }
+  });
+
+  // 8. Auto-fill reservation forms & Sync VIP Pass
+  const syncUserAcrossApp = () => {
+    const user = window.ClintonStore?.getCurrentUser();
+    
+    // Auto-fill reservation forms
+    if (user) {
+      document.querySelectorAll('.reservation-form').forEach(form => {
+        const nameInp = form.querySelector('[name="name"]');
+        const emailInp = form.querySelector('[name="email"]');
+        const phoneInp = form.querySelector('[name="phone"]');
+        const notesInp = form.querySelector('[name="notes"]');
+        if (nameInp && (!nameInp.value || nameInp.value === 'Distinguished Guest')) nameInp.value = user.name;
+        if (emailInp && !emailInp.value) emailInp.value = user.email;
+        if (phoneInp && !phoneInp.value) phoneInp.value = user.phone;
+        if (notesInp && !notesInp.value && user.preferences) notesInp.value = user.preferences;
+      });
+    }
+
+    // Sync VIP modal display
+    const vip = user || window.ClintonStore?.getVip();
+    if (vip) {
+      const elName = document.getElementById('vipGuestName');
+      const elTier = document.getElementById('vipTierName');
+      const elPoints = document.getElementById('vipPoints');
+      const elCode = document.getElementById('vipPassCode');
+      if (elName) elName.textContent = vip.name;
+      if (elTier) elTier.textContent = vip.tier || 'Privé Club Member';
+      if (elPoints) elPoints.textContent = `${vip.points || 0} pts`;
+      if (elCode) elCode.textContent = vip.code || 'VIP-CR-0000';
+    }
+  };
+
+  // Listen to auth changes
+  window.addEventListener('clinton:auth-changed', () => {
+    renderHeaderAuthWidget();
+    syncUserAcrossApp();
+  });
+
+  // Initial render
+  renderHeaderAuthWidget();
+  syncUserAcrossApp();
+
+  // Wire any other [data-open-auth] triggers
+  document.querySelectorAll('[data-open-auth]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tab = btn.getAttribute('data-open-auth') || 'signin';
+      window.openAuthModal(tab);
+    });
+  });
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 /**
@@ -799,21 +1259,66 @@ function initMyBookingsController() {
 function initVipController() {
   const dockBtn = document.getElementById('dockVipBtn');
   const modal = document.getElementById('vipModal');
+  const footer = document.getElementById('vipModalAuthFooter');
+
+  const updateVipView = () => {
+    const user = window.ClintonStore?.getCurrentUser();
+    const vip = user || window.ClintonStore?.getVip();
+    if (vip) {
+      const elName = document.getElementById('vipGuestName');
+      const elTier = document.getElementById('vipTierName');
+      const elPoints = document.getElementById('vipPoints');
+      const elCode = document.getElementById('vipPassCode');
+      if (elName) elName.textContent = vip.name;
+      if (elTier) elTier.textContent = vip.tier || 'Privé Club Member';
+      if (elPoints) elPoints.textContent = `${vip.points || 0} pts`;
+      if (elCode) elCode.textContent = vip.code || 'VIP-CR-0000';
+    }
+
+    if (footer) {
+      if (user) {
+        footer.innerHTML = `
+          <span style="font-size: 0.85rem; color: var(--color-cream-dim);">
+            Active Pass: <strong style="color: var(--color-pure-white);">${escapeHtml(user.name)}</strong> (${escapeHtml(user.email)})
+          </span>
+          <button type="button" class="btn btn-outline-gold btn-sm" id="vipModalLogoutBtn">
+            Sign Out
+          </button>
+        `;
+        footer.querySelector('#vipModalLogoutBtn')?.addEventListener('click', () => {
+          window.ClintonStore?.logout();
+          modal.classList.remove('is-active');
+          document.body.style.overflow = '';
+          window.playLuxuryChime?.('chime');
+          window.showToast?.('Signed out of Privé account.');
+        });
+      } else {
+        footer.innerHTML = `
+          <span style="font-size: 0.85rem; color: var(--color-cream-muted);">
+            Sign in or create an account to unlock your personalized pass and 300 points.
+          </span>
+          <button type="button" class="btn btn-gold btn-sm" id="vipModalLoginBtn">
+            Sign In / Join
+          </button>
+        `;
+        footer.querySelector('#vipModalLoginBtn')?.addEventListener('click', () => {
+          modal.classList.remove('is-active');
+          window.openAuthModal('signin');
+        });
+      }
+    }
+  };
 
   if (dockBtn && modal) {
     dockBtn.addEventListener('click', () => {
-      const vip = window.ClintonStore?.getVip();
-      if (vip) {
-        document.getElementById('vipGuestName').textContent = vip.name;
-        document.getElementById('vipTierName').textContent = vip.tier;
-        document.getElementById('vipPoints').textContent = `${vip.points} pts`;
-        document.getElementById('vipPassCode').textContent = vip.code;
-      }
+      updateVipView();
       modal.classList.add('is-active');
       document.body.style.overflow = 'hidden';
       window.playLuxuryChime('chime');
     });
   }
+
+  window.addEventListener('clinton:auth-changed', updateVipView);
 }
 
 /**
@@ -823,6 +1328,7 @@ function initMaitreDController() {
   const dockBtn = document.getElementById('dockMaitreDBtn');
   const modal = document.getElementById('maitreDModal');
   const tbody = document.getElementById('maitreDBookingsBody');
+  const notice = document.getElementById('maitreDStaffNotice');
 
   if (dockBtn && modal) {
     dockBtn.addEventListener('click', () => {
@@ -834,15 +1340,43 @@ function initMaitreDController() {
 
   function renderMaitreD() {
     const list = window.ClintonStore?.getReservations() || [];
+    const user = window.ClintonStore?.getCurrentUser();
+
+    if (notice) {
+      if (user && user.role === 'staff') {
+        notice.innerHTML = `
+          <div style="background: rgba(119, 118, 74, 0.25); border: 1px solid var(--color-mustard-gold); border-radius: var(--radius-xs); padding: 0.65rem 1rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem;">
+            <span style="color: var(--color-mustard-gold); font-weight: 600;">Authenticated Front of House Desk &bull; ${escapeHtml(user.name)}</span>
+            <span class="badge badge-gold">Active Shift</span>
+          </div>
+        `;
+      } else {
+        notice.innerHTML = `
+          <div style="background: rgba(232, 185, 27, 0.08); border: 1px dashed rgba(232, 185, 27, 0.4); border-radius: var(--radius-xs); padding: 0.75rem 1rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; font-size: 0.85rem;">
+            <span style="color: var(--color-warm-cream);">Staff Operations Preview Mode (Sign in with Staff credentials for full command)</span>
+            <button type="button" class="btn btn-outline-gold btn-sm" id="maitreDQuickStaffBtn" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;">
+              🎩 1-Click Maître D' Sign In
+            </button>
+          </div>
+        `;
+        notice.querySelector('#maitreDQuickStaffBtn')?.addEventListener('click', () => {
+          window.ClintonStore?.login('staff@clinton.com', 'staff2026');
+          window.playLuxuryChime?.('success');
+          window.showToast?.("Signed in as Maître D' Jean-Luc (Staff)");
+          renderMaitreD();
+        });
+      }
+    }
+
     if (!tbody) return;
 
     tbody.innerHTML = list.map(r => `
       <tr>
         <td style="font-family: monospace; font-weight: 700; color: var(--color-mustard-gold);">${r.id}</td>
-        <td><strong>${r.name}</strong></td>
+        <td><strong>${escapeHtml(r.name)}</strong></td>
         <td>${r.guests}</td>
         <td>${r.time}</td>
-        <td>${r.seating}</td>
+        <td>${escapeHtml(r.seating)}</td>
         <td><span class="badge ${r.status === 'Cancelled' ? 'badge-olive' : 'badge-gold'}">${r.status}</span></td>
         <td>
           ${r.status === 'Confirmed' ? `

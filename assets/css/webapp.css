@@ -679,3 +679,253 @@
     grid-template-columns: 1fr;
   }
 }
+/* ==========================================================================
+   CLINTON RESTAURANT — AUTHENTICATION & MEMBER SUITE STYLES
+   ========================================================================== */
+
+/* Header User Profile Widget */
+.user-auth-widget {
+  position: relative;
+}
+
+.user-profile-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(36, 36, 32, 0.85);
+  border: 1px solid rgba(232, 185, 27, 0.4);
+  color: var(--color-warm-cream);
+  padding: 0.45rem 0.9rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: var(--font-sans-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.user-profile-btn:hover {
+  background: rgba(232, 185, 27, 0.18);
+  border-color: var(--color-mustard-gold);
+  color: var(--color-pure-white);
+  box-shadow: 0 0 15px rgba(232, 185, 27, 0.25);
+}
+
+.user-avatar-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-mustard-gold);
+  color: var(--color-charcoal-black);
+  font-family: var(--font-serif-accent);
+  font-weight: 800;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-profile-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 280px;
+  background: var(--color-charcoal-deep);
+  border: 1px solid var(--color-mustard-gold);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 25px rgba(232, 185, 27, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--transition-fast);
+  z-index: 2100;
+}
+
+.user-profile-dropdown.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-user-header {
+  border-bottom: 1px solid rgba(232, 185, 27, 0.2);
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.dropdown-user-name {
+  font-family: var(--font-serif-display);
+  font-size: 1.15rem;
+  color: var(--color-pure-white);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.dropdown-user-role {
+  font-size: 0.75rem;
+  font-family: var(--font-serif-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-mustard-gold);
+}
+
+.dropdown-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dropdown-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--color-warm-cream);
+  font-size: 0.85rem;
+  padding: 0.45rem 0.5rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+
+.dropdown-menu-item:hover {
+  background: rgba(232, 185, 27, 0.15);
+  color: var(--color-mustard-gold);
+  padding-left: 0.85rem;
+}
+
+.dropdown-menu-item svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-mustard-gold);
+}
+
+.dropdown-logout-btn {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(232, 185, 27, 0.15);
+  color: #EF4444;
+}
+
+.dropdown-logout-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #EF4444;
+}
+
+/* Auth Modal Tabs & Demo Badges */
+.auth-nav-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(232, 185, 27, 0.25);
+  margin-bottom: 2rem;
+}
+
+.auth-nav-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-cream-dim);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-serif-accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.auth-nav-tab.is-active {
+  color: var(--color-mustard-gold);
+  border-bottom-color: var(--color-mustard-gold);
+}
+
+.demo-login-box {
+  background: rgba(232, 185, 27, 0.08);
+  border: 1px dashed rgba(232, 185, 27, 0.35);
+  border-radius: var(--radius-xs);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.demo-login-title {
+  font-family: var(--font-serif-accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-mustard-gold);
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.demo-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.demo-chip-btn {
+  background: var(--color-charcoal-deep);
+  border: 1px solid rgba(232, 185, 27, 0.25);
+  border-radius: var(--radius-xs);
+  color: var(--color-warm-cream);
+  padding: 0.45rem 0.5rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.demo-chip-btn:hover {
+  background: var(--color-mustard-gold);
+  color: var(--color-charcoal-black);
+  border-color: var(--color-mustard-gold);
+  font-weight: 700;
+}
+
+.password-input-wrap {
+  position: relative;
+}
+
+.password-toggle-eye {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--color-cream-dim);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.password-toggle-eye:hover {
+  color: var(--color-mustard-gold);
+}
+
+@media (max-width: 768px) {
+  .user-signin-trigger span {
+    display: none;
+  }
+  .user-signin-trigger {
+    padding: 0.5rem 0.65rem !important;
+  }
+  .user-profile-btn {
+    padding: 0.35rem 0.55rem;
+  }
+  .user-profile-btn .user-display-name {
+    display: none;
+  }
+  .user-profile-dropdown {
+    right: -40px;
+    width: 260px;
+  }
+}

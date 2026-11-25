@@ -9,7 +9,9 @@ const ClintonStore = (() => {
     RESERVATIONS: 'clinton_reservations_v2',
     ORDERS: 'clinton_orders_v2',
     VIP: 'clinton_vip_v2',
-    TABLES: 'clinton_tables_v2'
+    TABLES: 'clinton_tables_v2',
+    USERS: 'clinton_users_v2',
+    CURRENT_USER: 'clinton_current_user_v2'
   };
 
   // 1. Rich Haute Gastronomy Menu Catalog with Provenance & Pairings
@@ -322,6 +324,88 @@ const ClintonStore = (() => {
       save(STORAGE_KEYS.ORDERS, orders);
       window.dispatchEvent(new CustomEvent('clinton:orders-updated', { detail: { orders } }));
       return order;
+    },
+
+    // Users & Session Authentication Store
+    getUsers: () => load(STORAGE_KEYS.USERS, [
+      {
+        id: 'usr-1',
+        name: 'Lord Sterling',
+        email: 'vip@clinton.com',
+        password: 'password123',
+        phone: '+1 (212) 555-8821',
+        role: 'vip',
+        tier: 'Grand Cru Élite Member',
+        points: 1850,
+        code: 'VIP-CR-9921',
+        preferences: 'Allergy: Shellfish • Preferred Zone: The Sommelier Vault • Vintage: 2016 Margaux',
+        memberSince: '2023'
+      },
+      {
+        id: 'usr-2',
+        name: "Maître D' Jean-Luc",
+        email: 'staff@clinton.com',
+        password: 'staff2026',
+        phone: '+1 (212) 555-0198',
+        role: 'staff',
+        tier: 'Executive Service Brigade',
+        points: 0,
+        code: 'STAFF-CR-001',
+        preferences: 'Head Maître D’ • Front of House Operations',
+        memberSince: '2012'
+      },
+      {
+        id: 'usr-3',
+        name: 'Eleanor Vance',
+        email: 'guest@example.com',
+        password: 'password123',
+        phone: '+1 (212) 555-3392',
+        role: 'member',
+        tier: 'Privé Club Member',
+        points: 450,
+        code: 'MBR-CR-4412',
+        preferences: 'Prefers quiet window seating • Wine: Meursault',
+        memberSince: '2024'
+      }
+    ]),
+    getCurrentUser: () => load(STORAGE_KEYS.CURRENT_USER, null),
+    login: (email, password) => {
+      const users = window.ClintonStore.getUsers();
+      const user = users.find(u => u.email.toLowerCase() === (email || '').trim().toLowerCase() && u.password === password);
+      if (!user) {
+        return { success: false, message: 'Invalid credentials. Please verify your email and password.' };
+      }
+      save(STORAGE_KEYS.CURRENT_USER, user);
+      window.dispatchEvent(new CustomEvent('clinton:auth-changed', { detail: { user } }));
+      return { success: true, user };
+    },
+    register: (userData) => {
+      const users = window.ClintonStore.getUsers();
+      if (users.some(u => u.email.toLowerCase() === (userData.email || '').trim().toLowerCase())) {
+        return { success: false, message: 'An account with this email address already exists. Please sign in.' };
+      }
+      const newUser = {
+        id: 'usr-' + Date.now(),
+        name: userData.name?.trim() || 'Distinguished Guest',
+        email: userData.email.trim(),
+        password: userData.password,
+        phone: userData.phone?.trim() || '',
+        role: 'member',
+        tier: 'Privé Club Member',
+        points: 300, // Welcome dining points
+        code: 'MBR-CR-' + Math.floor(1000 + Math.random() * 9000),
+        preferences: userData.preferences?.trim() || 'Standard Continental Service',
+        memberSince: new Date().getFullYear().toString()
+      };
+      users.push(newUser);
+      save(STORAGE_KEYS.USERS, users);
+      save(STORAGE_KEYS.CURRENT_USER, newUser);
+      window.dispatchEvent(new CustomEvent('clinton:auth-changed', { detail: { user: newUser } }));
+      return { success: true, user: newUser };
+    },
+    logout: () => {
+      localStorage.removeItem(STORAGE_KEYS.CURRENT_USER);
+      window.dispatchEvent(new CustomEvent('clinton:auth-changed', { detail: { user: null } }));
     }
   };
 })();
