@@ -7,3 +7,5 @@ Thumbs.db
 
 # Local server logs
 scratch/
+
+.vercel

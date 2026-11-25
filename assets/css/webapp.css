@@ -1,45 +1,50 @@
 /* ==========================================================================
-   CLINTON RESTAURANT — WEB APPLICATION SUITE
-   Components: App Dock, Slide Cart, Interactive Floor Plan, Sommelier Concierge,
-   My Bookings Portal, Privé VIP Pass, and Maître D' Operations Dashboard.
+   CLINTON RESTAURANT — ULTRA-LUXURY CONTINENTAL WEBAPP SUITE
+   Michelin-Standard Gastronomy Application Framework & Interface
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. FLOATING LUXURY APP DOCK (Quick Action Bar)
+   1. FLOATING LUXURY APP ACTION BAR (Desktop & Mobile)
    -------------------------------------------------------------------------- */
 .app-floating-dock {
   position: fixed;
-  bottom: 1.5rem;
+  bottom: 1.75rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1500;
-  background: rgba(22, 22, 20, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(232, 185, 27, 0.35);
-  border-radius: 50px;
-  padding: 0.45rem 0.85rem;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(232, 185, 27, 0.15);
+  background: rgba(22, 22, 20, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(232, 185, 27, 0.4);
+  border-radius: 60px;
+  padding: 0.5rem 0.95rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 25px rgba(232, 185, 27, 0.15);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   transition: all var(--transition-smooth);
+}
+
+.app-floating-dock:hover {
+  border-color: var(--color-mustard-gold);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(232, 185, 27, 0.22);
 }
 
 .dock-btn {
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   color: var(--color-warm-cream);
-  padding: 0.55rem 0.9rem;
-  border-radius: 30px;
+  padding: 0.6rem 1.05rem;
+  border-radius: 40px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   font-family: var(--font-sans-body);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   transition: all var(--transition-fast);
   position: relative;
   white-space: nowrap;
@@ -50,55 +55,71 @@
   height: 17px;
   color: var(--color-mustard-gold);
   flex-shrink: 0;
+  transition: transform var(--transition-fast);
 }
 
 .dock-btn:hover {
-  background: rgba(232, 185, 27, 0.15);
+  background: rgba(232, 185, 27, 0.14);
   color: var(--color-pure-white);
+  border-color: rgba(232, 185, 27, 0.3);
+}
+
+.dock-btn:hover svg {
+  transform: scale(1.12);
 }
 
 .dock-btn.is-highlight {
-  background: var(--color-mustard-gold);
-  color: var(--color-charcoal-black);
+  background: linear-gradient(135deg, #F3CF55 0%, #E8B91B 50%, #C7990D 100%);
+  color: #1a1a18;
+  font-weight: 700;
+  border-color: #E8B91B;
+  box-shadow: 0 4px 15px rgba(232, 185, 27, 0.3);
 }
 
 .dock-btn.is-highlight svg {
-  color: var(--color-charcoal-black);
+  color: #1a1a18;
+}
+
+.dock-btn.is-highlight:hover {
+  background: linear-gradient(135deg, #FFDF70 0%, #F5CA33 50%, #D4A516 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 185, 27, 0.45);
 }
 
 .dock-badge {
   position: absolute;
   top: -4px;
   right: -4px;
-  background-color: #E8B91B;
-  color: #20201D;
+  background: #E8B91B;
+  color: #1a1a18;
   font-size: 0.68rem;
-  font-weight: 700;
-  width: 18px;
-  height: 18px;
+  font-weight: 800;
+  width: 19px;
+  height: 19px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  border: 2px solid #1a1a18;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
 
 .dock-divider {
   width: 1px;
-  height: 20px;
-  background: rgba(232, 185, 27, 0.25);
+  height: 22px;
+  background: linear-gradient(to bottom, transparent, rgba(232, 185, 27, 0.35), transparent);
   margin: 0 0.2rem;
 }
 
-
 /* --------------------------------------------------------------------------
-   2. SLIDE-OUT ORDER CART DRAWER
+   2. SLIDE-OUT DEGUSTATION CART DRAWER
    -------------------------------------------------------------------------- */
 .cart-drawer-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(14, 14, 12, 0.8);
-  backdrop-filter: blur(6px);
+  background: rgba(12, 12, 10, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 2500;
   opacity: 0;
   visibility: hidden;
@@ -115,7 +136,7 @@
   top: 0;
   right: -100%;
   width: 100%;
-  max-width: 440px;
+  max-width: 480px;
   height: 100vh;
   background: var(--color-charcoal-deep);
   border-left: 1px solid rgba(232, 185, 27, 0.35);
@@ -123,7 +144,7 @@
   display: flex;
   flex-direction: column;
   transition: right var(--transition-smooth);
-  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.8);
+  box-shadow: -25px 0 60px rgba(0, 0, 0, 0.85);
 }
 
 .cart-drawer.is-active {
@@ -131,62 +152,81 @@
 }
 
 .cart-header {
-  padding: 1.8rem;
-  border-bottom: 1px solid rgba(232, 185, 27, 0.2);
+  padding: 1.8rem 2rem;
+  border-bottom: 1px solid rgba(232, 185, 27, 0.22);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: rgba(32, 32, 29, 0.6);
 }
 
 .cart-title-wrap {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
+}
+
+.cart-title-wrap svg {
+  width: 22px;
+  height: 22px;
+  color: var(--color-mustard-gold);
 }
 
 .cart-title {
   font-family: var(--font-serif-accent);
   font-size: 1.25rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--color-pure-white);
   text-transform: uppercase;
+  margin: 0;
 }
 
 .cart-body {
   flex: 1;
   overflow-y: auto;
-  padding: 1.5rem;
+  padding: 1.8rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.25rem;
 }
 
-.cart-empty-state {
-  text-align: center;
-  margin: auto 0;
-  padding: 2rem;
+.cart-course-group {
+  margin-bottom: 0.5rem;
 }
 
-.cart-empty-icon {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 1.25rem auto;
-  color: rgba(232, 185, 27, 0.4);
+.cart-course-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-serif-accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-mustard-gold);
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px dashed rgba(232, 185, 27, 0.25);
 }
 
 .cart-item {
   display: flex;
-  gap: 1rem;
-  padding: 1rem;
+  gap: 1.15rem;
+  padding: 1.15rem;
   background: var(--color-charcoal-surface);
   border: 1px solid rgba(232, 185, 27, 0.18);
   border-radius: var(--radius-xs);
   position: relative;
+  transition: all var(--transition-fast);
+}
+
+.cart-item:hover {
+  border-color: rgba(232, 185, 27, 0.45);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .cart-item-img {
-  width: 70px;
-  height: 70px;
+  width: 78px;
+  height: 78px;
   border-radius: var(--radius-xs);
   object-fit: cover;
   border: 1px solid rgba(232, 185, 27, 0.25);
@@ -201,29 +241,40 @@
 
 .cart-item-name {
   font-family: var(--font-serif-display);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--color-pure-white);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
 }
 
 .cart-item-price {
   font-family: var(--font-serif-accent);
   color: var(--color-mustard-gold);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
   margin-bottom: 0.4rem;
+}
+
+.cart-item-pairing {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: #c9c894;
+  font-style: italic;
+  margin-bottom: 0.6rem;
 }
 
 .cart-qty-ctrl {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   margin-top: auto;
 }
 
 .qty-btn {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   border: 1px solid rgba(232, 185, 27, 0.35);
   background: transparent;
@@ -232,6 +283,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1rem;
   font-weight: 700;
   transition: all var(--transition-fast);
 }
@@ -239,55 +291,65 @@
 .qty-btn:hover {
   background: var(--color-mustard-gold);
   color: var(--color-charcoal-black);
+  border-color: var(--color-mustard-gold);
 }
 
 .qty-val {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   color: var(--color-pure-white);
-  min-width: 18px;
+  min-width: 20px;
   text-align: center;
 }
 
 .cart-footer {
-  padding: 1.8rem;
-  border-top: 1px solid rgba(232, 185, 27, 0.2);
+  padding: 1.8rem 2rem;
+  border-top: 1px solid rgba(232, 185, 27, 0.22);
   background: var(--color-charcoal-deep);
 }
 
 .cart-total-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.55rem;
   font-size: 0.95rem;
   color: var(--color-cream-muted);
 }
 
 .cart-total-row.grand-total {
   font-family: var(--font-serif-accent);
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--color-pure-white);
-  border-top: 1px solid rgba(232, 185, 27, 0.2);
-  padding-top: 0.8rem;
-  margin-top: 0.8rem;
+  border-top: 1px solid rgba(232, 185, 27, 0.22);
+  padding-top: 0.85rem;
+  margin-top: 0.85rem;
 }
 
 .cart-total-row.grand-total span:last-child {
   color: var(--color-mustard-gold);
 }
 
-
 /* --------------------------------------------------------------------------
-   3. INTERACTIVE RESTAURANT FLOOR PLAN TABLE SELECTOR
+   3. ARCHITECTURAL FLOOR PLAN & TABLE SELECTOR
    -------------------------------------------------------------------------- */
 .floor-plan-container {
-  background: #171715;
-  border: 1px solid rgba(232, 185, 27, 0.3);
+  background: #141412;
+  border: 1px solid rgba(232, 185, 27, 0.35);
   border-radius: var(--radius-sm);
-  padding: 1.5rem;
+  padding: 2rem;
   position: relative;
   overflow: hidden;
+}
+
+.floor-plan-blueprint-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(232, 185, 27, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232, 185, 27, 0.04) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
 }
 
 .floor-zones-legend {
@@ -295,151 +357,191 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.82rem;
-  color: var(--color-cream-dim);
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+  font-size: 0.85rem;
+  color: var(--color-cream-muted);
+  position: relative;
+  z-index: 2;
 }
 
 .legend-chip {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
 .legend-dot {
-  width: 10px;
-  height: 10px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
 }
 
-.legend-dot.available { background: #4ADE80; box-shadow: 0 0 8px rgba(74, 222, 128, 0.5); }
-.legend-dot.selected { background: #E8B91B; box-shadow: 0 0 10px rgba(232, 185, 27, 0.8); }
-.legend-dot.reserved { background: #EF4444; }
+.legend-dot.available { background: #4ADE80; box-shadow: 0 0 10px rgba(74, 222, 128, 0.6); }
+.legend-dot.selected { background: #E8B91B; box-shadow: 0 0 12px rgba(232, 185, 27, 0.9); }
+.legend-dot.reserved { background: #EF4444; opacity: 0.7; }
 
-.floor-grid-visual {
+.floor-zones-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 1.15rem;
+  position: relative;
+  z-index: 2;
 }
 
 .table-node-card {
-  background: #242420;
-  border: 1px solid rgba(232, 185, 27, 0.25);
+  background: rgba(36, 36, 32, 0.85);
+  border: 1px solid rgba(232, 185, 27, 0.28);
   border-radius: var(--radius-xs);
-  padding: 1.1rem 0.85rem;
+  padding: 1.25rem 0.95rem;
   text-align: center;
   cursor: pointer;
   transition: all var(--transition-fast);
   position: relative;
+  backdrop-filter: blur(4px);
 }
 
 .table-node-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   border-color: var(--color-mustard-gold);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  background: rgba(45, 45, 40, 0.95);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 15px rgba(232, 185, 27, 0.15);
 }
 
 .table-node-card.is-selected {
-  background: rgba(232, 185, 27, 0.18);
+  background: rgba(232, 185, 27, 0.2);
   border-color: var(--color-mustard-gold);
-  box-shadow: 0 0 18px rgba(232, 185, 27, 0.35);
+  box-shadow: 0 0 25px rgba(232, 185, 27, 0.4);
+  transform: translateY(-2px);
 }
 
 .table-node-card.is-reserved {
   opacity: 0.45;
   cursor: not-allowed;
-  border-color: #555;
+  border-color: #4a4a45;
 }
 
-.table-icon {
-  width: 32px;
-  height: 32px;
-  margin: 0 auto 0.45rem auto;
+.table-icon-svg {
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 0.5rem auto;
   color: var(--color-mustard-gold);
+  transition: transform var(--transition-fast);
+}
+
+.table-node-card:hover .table-icon-svg {
+  transform: scale(1.1);
 }
 
 .table-node-title {
   font-family: var(--font-serif-accent);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--color-pure-white);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
 }
 
 .table-node-meta {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--color-cream-dim);
 }
 
-
-/* --------------------------------------------------------------------------
-   4. SOMMELIER CONCIERGE WIZARD
-   -------------------------------------------------------------------------- */
-.sommelier-wizard {
-  text-align: center;
+.table-status-pill {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
 }
 
+/* --------------------------------------------------------------------------
+   4. SOMMELIER CONCIERGE MODAL
+   -------------------------------------------------------------------------- */
 .pairing-result-box {
   background: var(--color-charcoal-deep);
   border: 1px solid var(--color-mustard-gold);
   border-radius: var(--radius-sm);
-  padding: 2rem;
-  margin-top: 1.5rem;
+  padding: 2.2rem;
+  margin-top: 1.8rem;
   text-align: left;
   display: flex;
   gap: 2rem;
   align-items: center;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8), 0 0 25px rgba(232, 185, 27, 0.15);
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .pairing-wine-badge {
   background: rgba(232, 185, 27, 0.15);
   color: var(--color-mustard-gold);
   border: 1px solid var(--color-mustard-gold);
-  padding: 0.35rem 0.85rem;
+  padding: 0.4rem 0.95rem;
   border-radius: var(--radius-xs);
   font-size: 0.75rem;
   font-family: var(--font-serif-accent);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   display: inline-block;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
 }
-
 
 /* --------------------------------------------------------------------------
    5. PRIVÉ VIP PASS CARD
    -------------------------------------------------------------------------- */
 .vip-pass-card {
-  background: linear-gradient(135deg, #2A2A26 0%, #1A1A18 50%, #2D2715 100%);
+  background: linear-gradient(135deg, #2D2D28 0%, #171715 50%, #332B14 100%);
   border: 1px solid var(--color-mustard-gold);
   border-radius: var(--radius-sm);
-  padding: 2.5rem;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 30px rgba(232, 185, 27, 0.2);
+  padding: 2.8rem;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.85), 0 0 40px rgba(232, 185, 27, 0.25);
   position: relative;
   overflow: hidden;
+  transition: transform var(--transition-smooth);
 }
 
-.vip-pass-card::after {
+.vip-pass-card:hover {
+  transform: translateY(-4px);
+}
+
+.vip-pass-card::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(232, 185, 27, 0.08) 0%, transparent 60%);
-  pointer-events: none;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(232, 185, 27, 0.18), transparent);
+  transition: left 0.8s ease;
+}
+
+.vip-pass-card:hover::before {
+  left: 100%;
 }
 
 .vip-chip-metal {
-  width: 48px;
-  height: 36px;
-  background: linear-gradient(135deg, #d4af37 0%, #fff2a3 50%, #aa8012 100%);
-  border-radius: 4px;
+  width: 52px;
+  height: 38px;
+  background: linear-gradient(135deg, #F3CF55 0%, #FFF4B8 50%, #B88E0B 100%);
+  border-radius: 6px;
   margin-bottom: 1.5rem;
   border: 1px solid #735706;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  position: relative;
 }
 
+.vip-chip-metal::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 3px;
+}
 
 /* --------------------------------------------------------------------------
    6. MAÎTRE D' OPERATIONS DASHBOARD
@@ -453,73 +555,115 @@
 
 .metric-stat-card {
   background: var(--color-charcoal-deep);
-  border: 1px solid rgba(232, 185, 27, 0.25);
+  border: 1px solid rgba(232, 185, 27, 0.28);
   border-radius: var(--radius-xs);
-  padding: 1.35rem 1rem;
+  padding: 1.4rem 1.1rem;
   text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.metric-stat-card:hover {
+  border-color: var(--color-mustard-gold);
+  transform: translateY(-2px);
 }
 
 .metric-stat-num {
   font-family: var(--font-serif-accent);
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--color-mustard-gold);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
+  line-height: 1;
 }
 
 .metric-stat-label {
   font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--color-cream-dim);
 }
 
 .live-bookings-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   text-align: left;
 }
 
 .live-bookings-table th {
-  padding: 0.85rem 1rem;
-  border-bottom: 1px solid rgba(232, 185, 27, 0.3);
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid rgba(232, 185, 27, 0.35);
   color: var(--color-mustard-gold);
   font-family: var(--font-serif-accent);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   font-weight: 600;
   text-transform: uppercase;
+  background: rgba(32, 32, 29, 0.4);
 }
 
 .live-bookings-table td {
-  padding: 0.95rem 1rem;
+  padding: 1rem 1.15rem;
   border-bottom: 1px solid rgba(232, 185, 27, 0.12);
   color: var(--color-warm-cream);
 }
 
 .live-bookings-table tr:hover td {
-  background: rgba(232, 185, 27, 0.05);
+  background: rgba(232, 185, 27, 0.06);
 }
 
+/* --------------------------------------------------------------------------
+   7. DISH DETAIL MODAL (Quick View & Provenance)
+   -------------------------------------------------------------------------- */
+.dish-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.dish-detail-img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(232, 185, 27, 0.35);
+  box-shadow: var(--shadow-lg);
+}
+
+.dish-provenance-box {
+  background: rgba(232, 185, 27, 0.08);
+  border: 1px dashed rgba(232, 185, 27, 0.35);
+  border-radius: var(--radius-xs);
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  font-size: 0.88rem;
+  color: var(--color-warm-cream);
+}
 
 /* --------------------------------------------------------------------------
-   7. RESPONSIVE UTILITIES
+   8. RESPONSIVE BREAKPOINTS
    -------------------------------------------------------------------------- */
 @media (max-width: 900px) {
   .app-floating-dock {
-    width: 92%;
-    bottom: 1rem;
+    width: 94%;
+    bottom: 1.1rem;
     justify-content: space-around;
-    padding: 0.4rem 0.5rem;
+    padding: 0.45rem 0.6rem;
+  }
+  .dock-btn {
+    padding: 0.5rem 0.75rem;
   }
   .dock-btn span {
     display: none;
   }
-  .floor-grid-visual {
+  .floor-zones-wrapper {
     grid-template-columns: repeat(2, 1fr);
   }
   .dashboard-metrics-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .dish-detail-layout {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -527,5 +671,11 @@
   .pairing-result-box {
     flex-direction: column;
     text-align: center;
+  }
+  .cart-drawer {
+    max-width: 100%;
+  }
+  .floor-zones-wrapper {
+    grid-template-columns: 1fr;
   }
 }

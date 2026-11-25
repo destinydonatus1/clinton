@@ -796,6 +796,12 @@
   font-size: 1.25rem;
   color: var(--color-pure-white);
   font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.menu-card-title:hover {
+  color: var(--color-mustard-gold);
 }
 
 .menu-card-dots {

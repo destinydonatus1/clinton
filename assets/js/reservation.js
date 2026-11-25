@@ -152,6 +152,9 @@ function initReservationForms() {
       if (window.showToast) {
         window.showToast(`Reservation ${refCode} confirmed! We look forward to hosting you.`);
       }
+      if (window.playLuxuryChime) {
+        window.playLuxuryChime('success');
+      }
     });
   });
 }

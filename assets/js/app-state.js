@@ -1,29 +1,33 @@
 /**
  * CLINTON RESTAURANT — Core WebApp Reactive State Engine
- * Manages Cart, Persistent Bookings, Interactive Floor Plan, VIP Club, and Orders.
+ * Michelin-Standard Gastronomic Store & Operations Data
  */
 
 const ClintonStore = (() => {
   const STORAGE_KEYS = {
-    CART: 'clinton_cart_v1',
-    RESERVATIONS: 'clinton_reservations_v1',
-    ORDERS: 'clinton_orders_v1',
-    VIP: 'clinton_vip_v1',
-    TABLES: 'clinton_tables_v1'
+    CART: 'clinton_cart_v2',
+    RESERVATIONS: 'clinton_reservations_v2',
+    ORDERS: 'clinton_orders_v2',
+    VIP: 'clinton_vip_v2',
+    TABLES: 'clinton_tables_v2'
   };
 
-  // 1. Rich Menu Catalog
+  // 1. Rich Haute Gastronomy Menu Catalog with Provenance & Pairings
   const DISHES = [
     {
       id: 'dish-1',
       name: 'Filet Mignon au Poivre',
       sub: 'Tenderloin de Bœuf Black Angus',
       category: 'mains',
+      course: 'Deuxième Service (Plat Principal)',
       price: 68,
       desc: 'Center-cut Prime Black Angus beef, Madagascar green peppercorn cognac emulsion, charred broccolini, and potato gratin Dauphinois.',
-      image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80',
+      image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80',
       badge: "Chef's Signature",
-      pairing: '2016 Château Margaux',
+      provenance: 'Prime Black Angus dry-aged for 45 days by Creekstone Farms; black truffles foraged in Dordogne, France.',
+      allergens: ['Dairy (Butter)', 'Gluten (Gratin)'],
+      pairing: '2016 Château Margaux Premier Grand Cru',
+      pairingPrice: '$180 / bottle',
       calories: '720 kcal',
       prepTime: '22 mins'
     },
@@ -32,11 +36,15 @@ const ClintonStore = (() => {
       name: 'Chilean Sea Bass Royale',
       sub: 'Bar du Chili aux Émulsions de Safran',
       category: 'mains',
+      course: 'Deuxième Service (Plat Principal)',
       price: 64,
-      desc: 'Wild-caught Chilean bass, saffron fennel emulsion, braised Romanesco, and Oscietra caviar reduction.',
-      image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=400&q=80',
+      desc: 'Wild-caught Chilean bass, saffron fennel emulsion, braised Romanesco, and Royal Oscietra caviar reduction.',
+      image: 'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80',
       badge: 'Gluten-Free',
-      pairing: '2020 Meursault Premier Cru',
+      provenance: 'MSC-certified Chilean sea bass from pristine sub-Antarctic waters; Iranian grade-1 saffron threads.',
+      allergens: ['Fish', 'Caviar (Sturgeon)'],
+      pairing: '2020 Domaine des Comtes Lafon Meursault Premier Cru',
+      pairingPrice: '$145 / bottle',
       calories: '540 kcal',
       prepTime: '18 mins'
     },
@@ -45,11 +53,15 @@ const ClintonStore = (() => {
       name: 'Carpaccio di Manzo',
       sub: 'Bœuf Wagyu & Truffes Blanches',
       category: 'starters',
+      course: 'Premier Service (Hors d’Œuvre)',
       price: 28,
       desc: 'Thinly sliced Wagyu tenderloin, 36-month Parmigiano-Reggiano crisps, caperberries, wild baby arugula, and white truffle oil drizzle.',
-      image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=400&q=80',
+      image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80',
       badge: 'Organic Terroir',
-      pairing: '2019 Barolo Serralunga',
+      provenance: 'A5 Miyazaki Wagyu beef; Parmigiano-Reggiano Vacche Rosse aged 36 months in Reggio Emilia.',
+      allergens: ['Dairy (Cheese)'],
+      pairing: '2019 Barolo Serralunga d’Alba DOCG',
+      pairingPrice: '$130 / bottle',
       calories: '380 kcal',
       prepTime: '10 mins'
     },
@@ -58,11 +70,15 @@ const ClintonStore = (() => {
       name: "Soupe à l'Oignon Gratinée",
       sub: 'Consommé de Tradition Française',
       category: 'starters',
+      course: 'Premier Service (Hors d’Œuvre)',
       price: 24,
       desc: 'Caramelized Cevennes sweet onions, rich beef consommé infused with thyme, toasted brioche, and aged Swiss Gruyère crust.',
-      image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=400&q=80',
+      image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80',
       badge: 'Classical French',
-      pairing: '2018 Côtes du Rhône',
+      provenance: 'Cevennes sweet onions caramelized for 14 hours; Gruyère AOP matured in Swiss alpine sandstone caves.',
+      allergens: ['Gluten (Brioche)', 'Dairy (Gruyère)'],
+      pairing: '2018 E. Guigal Côtes du Rhône Rouge',
+      pairingPrice: '$75 / bottle',
       calories: '420 kcal',
       prepTime: '12 mins'
     },
@@ -71,11 +87,15 @@ const ClintonStore = (() => {
       name: 'Risotto ai Funghi Porcini',
       sub: 'Carnaroli Acquerello & Truffes Noires',
       category: 'pastas',
+      course: 'Deuxième Service (Pâtes & Risottos)',
       price: 42,
       desc: 'Acquerello Carnaroli rice, sautéed foraged chanterelles and porcini, black winter truffle carpaccio, and aged pecorino foam.',
-      image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281724?auto=format&fit=crop&w=400&q=80',
+      image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281724?auto=format&fit=crop&w=600&q=80',
       badge: 'Vegetarian',
-      pairing: '2017 Brunello di Montalcino',
+      provenance: '7-year aged Carnaroli rice from Tenuta Colombara, Vercelli; foraged wild porcini from Tuscany.',
+      allergens: ['Dairy (Pecorino, Butter)'],
+      pairing: '2017 Biondi-Santi Brunello di Montalcino',
+      pairingPrice: '$150 / bottle',
       calories: '610 kcal',
       prepTime: '20 mins'
     },
@@ -84,11 +104,15 @@ const ClintonStore = (() => {
       name: "Ravioli d'Astice & Caviar",
       sub: 'Homard du Maine & Bisque de Cognac',
       category: 'pastas',
+      course: 'Deuxième Service (Pâtes & Risottos)',
       price: 52,
       desc: 'Hand-pleated egg pasta filled with Maine lobster and mascarpone, finished in a cognac lobster bisque with chives and Siberian caviar.',
-      image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80',
+      image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=80',
       badge: "Chef's Signature",
-      pairing: '2021 Chablis Premier Cru',
+      provenance: 'Wild live Maine lobster; Courvoisier XO cognac reduction; farmed Siberian Baerii sturgeon caviar.',
+      allergens: ['Shellfish (Lobster)', 'Eggs', 'Gluten', 'Dairy'],
+      pairing: '2021 William Fèvre Chablis Grand Cru Les Clos',
+      pairingPrice: '$135 / bottle',
       calories: '580 kcal',
       prepTime: '16 mins'
     },
@@ -97,11 +121,15 @@ const ClintonStore = (() => {
       name: "Canard Rôti à l'Orange",
       sub: 'Magret de Canard Croustillant',
       category: 'mains',
+      course: 'Deuxième Service (Plat Principal)',
       price: 58,
       desc: 'Seared Moulard duck breast, Seville bitter orange gastrique, spiced carrot puree, glazed baby turnips, and crisp duck crackling.',
-      image: 'https://images.unsplash.com/photo-1514944298352-78d120a13d09?auto=format&fit=crop&w=400&q=80',
+      image: 'https://images.unsplash.com/photo-1514944298352-78d120a13d09?auto=format&fit=crop&w=600&q=80',
       badge: 'Haute Cuisine',
-      pairing: '2018 Gevrey-Chambertin',
+      provenance: 'Free-range Moulard ducks raised ethically in Hudson Valley; organic Seville oranges from Andalusia.',
+      allergens: ['None (Gluten-Free, Dairy-Free by request)'],
+      pairing: '2018 Domaine Armand Rousseau Gevrey-Chambertin',
+      pairingPrice: '$165 / bottle',
       calories: '690 kcal',
       prepTime: '24 mins'
     },
@@ -110,11 +138,15 @@ const ClintonStore = (() => {
       name: 'Fondant au Chocolat Valrhona',
       sub: 'Chocolat Noir 70% & Gelato Bourbon',
       category: 'desserts',
+      course: 'Grand Finale (Patisserie Royale)',
       price: 22,
       desc: 'Molten 70% dark Guanaja chocolate cake, Tahitian vanilla bean gelato, hazelnut praline crumble, and 24k gold leaf accent.',
-      image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=400&q=80',
+      image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=80',
       badge: 'Patisserie Royale',
-      pairing: '20-Year Tawny Port',
+      provenance: 'Grand Cru Guanaja 70% dark chocolate from Valrhona, Tain-l’Hermitage; organic Tahitian vanilla orchids.',
+      allergens: ['Dairy', 'Eggs', 'Tree Nuts (Hazelnuts)'],
+      pairing: 'Taylor Fladgate 20-Year-Old Tawny Port',
+      pairingPrice: '$95 / bottle',
       calories: '490 kcal',
       prepTime: '14 mins'
     }
@@ -122,20 +154,19 @@ const ClintonStore = (() => {
 
   // 2. Interactive Dining Tables Layout
   const DEFAULT_TABLES = [
-    { id: 'T-M1', name: 'Table 01', zone: 'Grand Dining Salon', seats: 2, status: 'available', coords: 'x: 20%, y: 25%' },
-    { id: 'T-M2', name: 'Table 02', zone: 'Grand Dining Salon', seats: 4, status: 'available', coords: 'x: 45%, y: 25%' },
-    { id: 'T-M3', name: 'Table 03', zone: 'Grand Dining Salon', seats: 4, status: 'reserved', coords: 'x: 70%, y: 25%' },
-    { id: 'T-M4', name: 'Table 04', zone: 'Grand Dining Salon', seats: 6, status: 'available', coords: 'x: 45%, y: 50%' },
-    { id: 'T-V1', name: 'Vault Alcove 1', zone: 'The Sommelier Vault', seats: 2, status: 'available', coords: 'x: 18%, y: 75%' },
-    { id: 'T-V2', name: 'Vault Alcove 2', zone: 'The Sommelier Vault', seats: 4, status: 'available', coords: 'x: 42%, y: 75%' },
-    { id: 'T-V3', name: 'Vault Cellar Table', zone: 'The Sommelier Vault', seats: 8, status: 'available', coords: 'x: 72%, y: 75%' },
-    { id: 'T-C1', name: "Chef's Bar 01", zone: "Chef's Atelier", seats: 2, status: 'available', coords: 'x: 85%, y: 35%' },
-    { id: 'T-C2', name: "Chef's Bar 02", zone: "Chef's Atelier", seats: 4, status: 'available', coords: 'x: 85%, y: 55%' },
-    { id: 'T-R1', name: 'Veranda Terrace 1', zone: 'Candlelit Veranda', seats: 2, status: 'available', coords: 'x: 15%, y: 40%' },
-    { id: 'T-R2', name: 'Veranda Terrace 2', zone: 'Candlelit Veranda', seats: 2, status: 'available', coords: 'x: 15%, y: 58%' }
+    { id: 'T-M1', name: 'Table 01', zone: 'Grand Dining Salon', seats: 2, status: 'available', view: 'Center Chandelier Vantage', type: 'Intimate Leather Booth' },
+    { id: 'T-M2', name: 'Table 02', zone: 'Grand Dining Salon', seats: 4, status: 'available', view: 'Grand Boulevard Window', type: 'Mahogany Round Table' },
+    { id: 'T-M3', name: 'Table 03', zone: 'Grand Dining Salon', seats: 4, status: 'reserved', view: 'Fireplace Alcove', type: 'Velvet Banquet Seating' },
+    { id: 'T-M4', name: 'Table 04', zone: 'Grand Dining Salon', seats: 6, status: 'available', view: 'Main Salon Focal Point', type: 'Celebratory Oval Banquet' },
+    { id: 'T-V1', name: 'Vault Alcove 1', zone: 'The Sommelier Vault', seats: 2, status: 'available', view: '1982 Bordeaux Glass Cask', type: 'Private Cellar High-Top' },
+    { id: 'T-V2', name: 'Vault Alcove 2', zone: 'The Sommelier Vault', seats: 4, status: 'available', view: 'Subterranean Oak Vault', type: 'Sommelier Tasting Table' },
+    { id: 'T-V3', name: 'Vault Imperial Table', zone: 'The Sommelier Vault', seats: 8, status: 'available', view: 'Enclosed Grand Reserve Cellar', type: 'Imperial VIP Suite' },
+    { id: 'T-C1', name: "Chef's Bar 01", zone: "Chef's Atelier", seats: 2, status: 'available', view: 'Direct Kitchen Pass Vantage', type: 'Front-Row Atelier Counter' },
+    { id: 'T-C2', name: "Chef's Bar 02", zone: "Chef's Atelier", seats: 4, status: 'available', view: 'Open Flame Hearth View', type: 'Plating Station High-Top' },
+    { id: 'T-R1', name: 'Veranda Terrace 1', zone: 'Candlelit Veranda', seats: 2, status: 'available', view: 'Botanical Garden & Skyline', type: 'Romantic Garden Table' },
+    { id: 'T-R2', name: 'Veranda Terrace 2', zone: 'Candlelit Veranda', seats: 4, status: 'available', view: 'Glass Conservatory View', type: 'Terrace Pergola Table' }
   ];
 
-  // Helper storage methods
   function load(key, defaultVal) {
     try {
       const data = localStorage.getItem(key);
@@ -153,7 +184,6 @@ const ClintonStore = (() => {
     }
   }
 
-  // Initial Sample Reservations for rich WebApp demo
   function getInitialReservations() {
     return [
       {
@@ -164,7 +194,7 @@ const ClintonStore = (() => {
         date: new Date().toISOString().split('T')[0],
         time: '19:30',
         guests: '2 Guests',
-        seating: 'The Sommelier Vault',
+        seating: 'The Sommelier Vault (Vault Alcove 1)',
         tableId: 'T-V1',
         occasion: 'Anniversary Celebration',
         notes: 'Pre-chill 2016 Margaux, celebratory candle',
@@ -179,7 +209,7 @@ const ClintonStore = (() => {
         date: new Date().toISOString().split('T')[0],
         time: '20:00',
         guests: '4 Guests',
-        seating: 'Grand Dining Salon',
+        seating: 'Grand Dining Salon (Table 02)',
         tableId: 'T-M2',
         occasion: 'Corporate Executive Dinner',
         notes: 'Quiet table requested for business briefing',
@@ -199,13 +229,14 @@ const ClintonStore = (() => {
       const dish = DISHES.find(d => d.id === dishId);
       if (!dish) return;
       const cart = load(STORAGE_KEYS.CART, []);
-      const existing = cart.find(item => item.dishId === dishId && item.options === (options.notes || ''));
+      const existing = cart.find(item => item.dishId === dishId);
       if (existing) {
         existing.qty += qty;
       } else {
         cart.push({
           dishId: dish.id,
           name: dish.name,
+          course: dish.course,
           price: dish.price,
           qty: qty,
           pairing: dish.pairing,
@@ -270,17 +301,16 @@ const ClintonStore = (() => {
 
     // VIP Member Store
     getVip: () => load(STORAGE_KEYS.VIP, {
-      name: 'Distinguished Guest',
-      tier: 'Grand Cru Member',
-      tierNumber: 3,
-      points: 1450,
-      code: 'VIP-CR-8829',
-      memberSince: '2024',
+      name: 'Lord & Lady Clinton',
+      tier: 'Grand Cru Élite Member',
+      points: 1850,
+      code: 'VIP-CR-9921',
+      memberSince: '2023',
       perks: [
-        'Priority Cellar Reserve Booking',
-        'Complimentary Vintage Champagne Upon Arrival',
-        'Direct Maître D’ Concierge Line',
-        'Seasonal White Truffle Private Tastings'
+        'Priority Cellar Reserve Booking within 1 Hour',
+        'Complimentary 2012 Dom Pérignon Vintage on Arrival',
+        'Direct Maître D’ Concierge Line & Table Choice',
+        'Annual Invitation to White Truffle Degustation Gala'
       ]
     }),
 
@@ -296,5 +326,4 @@ const ClintonStore = (() => {
   };
 })();
 
-// Attach to global window
 window.ClintonStore = ClintonStore;
